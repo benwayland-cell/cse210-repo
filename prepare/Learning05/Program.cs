@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Shape testShape = new Rectangle("color", 10, 20);
+        Shape testShape = new Circle("color", 10);
 
         Console.WriteLine(testShape.GetColor());
         testShape.SetColor("other color");
