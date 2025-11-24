@@ -4,12 +4,16 @@ class Program
 {
     static void Main(string[] args)
     {
-        Shape testShape = new Circle("color", 10);
+        List<Shape> testShapes = new List<Shape> {
+            new Square("square color", 10),
+            new Rectangle("rectangle color", 10, 20),
+            new Circle("circle color", 10)
+        };
 
-        Console.WriteLine(testShape.GetColor());
-        testShape.SetColor("other color");
-        Console.WriteLine(testShape.GetColor());
-
-        Console.WriteLine(testShape.GetArea());
+        foreach (Shape shape in testShapes)
+        {
+            Console.WriteLine($"Color: {shape.GetColor()}");
+            Console.WriteLine($"Area: {shape.GetArea()}\n");
+        }
     }
 }
