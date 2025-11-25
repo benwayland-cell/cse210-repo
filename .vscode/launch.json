@@ -250,5 +250,18 @@
             "stopAtEntry": false
         },
 
+        {
+            "name": "Circle App",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-sandbox-CircleApp",
+            "program": "${workspaceFolder}/sandbox/CircleApp/bin/Debug/net8.0/Foundation4.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/sandbox/CircleApp",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+
     ]
 }
