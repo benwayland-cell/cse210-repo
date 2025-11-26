@@ -1,11 +1,16 @@
 
 public abstract class Space
 {
-    private string _name;
+    private string name;
 
-    public Space(string name)
+    public Space(string _name)
     {
-        _name = name;
+        name = _name;
+    }
+
+    public string GetName()
+    {
+        return name;
     }
 
     public abstract void LandOnSpace();
