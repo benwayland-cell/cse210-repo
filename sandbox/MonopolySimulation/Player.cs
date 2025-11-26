@@ -13,6 +13,16 @@ public class Player
         name = _name;
     }
 
+    public string GetName()
+    {
+        return name;
+    }
+
+    public int GetMoney()
+    {
+        return money;
+    }
+
     public void UpdateMoney(int amountToChange)
     {
         money += amountToChange;
@@ -29,7 +39,7 @@ public class Player
     }
 
     // public void RemoveProperty()
-    
+
     public void RunTurn()
     {
         Console.WriteLine($"Run {name}'s turn");

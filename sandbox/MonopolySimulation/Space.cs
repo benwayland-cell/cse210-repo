@@ -13,5 +13,5 @@ public abstract class Space
         return name;
     }
 
-    public abstract void LandOnSpace();
+    public abstract void LandOnSpace(Player currentPlayer);
 }

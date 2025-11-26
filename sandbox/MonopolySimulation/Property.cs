@@ -10,14 +10,25 @@ public abstract class Property : Space
         price = _price;
     }
 
-    public override void LandOnSpace()
+    protected int GetPrice()
+    {
+        return price;
+    }
+
+    public override void LandOnSpace(Player currentPlayer)
     {
         Console.WriteLine("Landed on space");
     }
 
-    // private void Purchase(Player purchasingPlayer)
+    private void Purchase(Player purchasingPlayer)
+    {
+        
+    }
 
-    // private void RunAuction(Player[] playerList)
+    private void RunAuction(Player[] playerList)
+    {
+        
+    }
 
-    // private abstract void PayRent(Player payingPlayer);
+    protected abstract void PayRent(Player payingPlayer);
 }

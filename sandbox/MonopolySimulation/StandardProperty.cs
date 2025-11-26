@@ -13,6 +13,9 @@ public class StandardProperty : Property
         propertiesNeededForMonopoly = _propertiesNeededForMonopoly;
     }
 
-    // private override void PayRent(Player payingPlayer)
+    protected override void PayRent(Player payingPlayer)
+    {
+        Console.WriteLine($"{payingPlayer.GetName()} pay {GetPrice()}");
+    }
 
 }
