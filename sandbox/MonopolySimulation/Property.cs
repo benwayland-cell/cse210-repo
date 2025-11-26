@@ -8,6 +8,8 @@ public abstract class Property : Space
     public Property(string _name, int _price) : base(_name)
     {
         price = _price;
+        // owner = null;
+        numOfSameTypeOwned = 0;
     }
 
     public override void LandOnSpace()
@@ -15,9 +17,9 @@ public abstract class Property : Space
         Console.WriteLine("Landed on space");
     }
 
-    // public void Purchase(Player purchasingPlayer)
+    // private void Purchase(Player purchasingPlayer)
 
-    // public void RunAuction(Player[] playerList)
+    // private void RunAuction(Player[] playerList)
 
-    // public void PayRent(Player payingPlayer)
+    // private abstract void PayRent(Player payingPlayer);
 }
