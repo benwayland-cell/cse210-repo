@@ -15,7 +15,14 @@ class Program
         // testPlayer.UpdateMoney(-100);
         // Console.WriteLine(testPlayer.GetMoney());
 
-        
+        // Card testCard1 = new Card("Test text 1", 0, 10);
+        // testCard1.RunCard(testPlayer);
+
+        // Card testCard2 = new Card("Test text 2", 1, 10);
+        // testCard2.RunCard(testPlayer);
+
+        // Card testCard3 = new Card("Test text 3", 2, 10);
+        // testCard3.RunCard(testPlayer);
 
     }
 }
