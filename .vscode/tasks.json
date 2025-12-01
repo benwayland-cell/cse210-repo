@@ -172,18 +172,18 @@
         //     "problemMatcher": "$msCompile"
         // },
 
-        // {
-        //     "label": "build-prove-Develop05",
-        //     "command": "dotnet",
-        //     "type": "process",
-        //     "args": [
-        //         "build",
-        //         "${workspaceFolder}/prove/Develop05/Develop05.csproj",
-        //         "/property:GenerateFullPaths=true",
-        //         "/consoleloggerparameters:NoSummary"
-        //     ],
-        //     "problemMatcher": "$msCompile"
-        // },
+        {
+            "label": "build-prove-Develop05",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/prove/Develop05/Develop05.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
 
         // {
         //     "label": "build-final-FinalProject",
