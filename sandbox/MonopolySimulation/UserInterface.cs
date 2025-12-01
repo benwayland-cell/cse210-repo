@@ -3,7 +3,7 @@ using System.Reflection.Metadata;
 
 public class UserInterface
 {
-    private static List<Space> board;
+    private static Space[] board;
     private static Player[] playerList;
     // private List<Card> chanceDeck
     // private List<Card> communityChestDeck
@@ -12,10 +12,10 @@ public class UserInterface
     {
         // init data
         playerList = _playerList;
-        // List<Card> chanceDeck = Card.GetChanceDeck()
-        // List<Card> communityChestDeck = Card.GetCommunityChestDeck()
+        // List<Card> chanceDeck = Card.GetChanceDeck();
+        // List<Card> communityChestDeck = Card.GetCommunityChestDeck();
+        // board = Space.GetBoard();
 
-        
     }
 
     static private void DisplayBoard()

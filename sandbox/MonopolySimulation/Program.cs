@@ -24,5 +24,12 @@ class Program
         // Card testCard3 = new Card("Test text 3", 2, 10);
         // testCard3.RunCard(testPlayer);
 
+        // Space[] testBoard = Space.GetBoard();
+
+        // testPlayer.Display();
+        // testPlayer.MoveToRelative(1);
+        // testPlayer.Display();
+        // testPlayer.MoveToAbsolute(0);
+        // testPlayer.Display();
     }
 }
