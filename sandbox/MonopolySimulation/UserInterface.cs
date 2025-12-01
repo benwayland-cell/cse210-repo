@@ -8,13 +8,21 @@ public class UserInterface
     // private List<Card> chanceDeck
     // private List<Card> communityChestDeck
 
+    private static int sizeOfBoard;
+
+    static public int GetSizeOfBoard()
+    {
+        return sizeOfBoard;
+    }
+
     static public void MainLoop(Player[] _playerList)
     {
         // init data
         playerList = _playerList;
         // List<Card> chanceDeck = Card.GetChanceDeck();
         // List<Card> communityChestDeck = Card.GetCommunityChestDeck();
-        // board = Space.GetBoard();
+        board = Space.GetBoard();
+        sizeOfBoard = board.Length;
 
     }
 

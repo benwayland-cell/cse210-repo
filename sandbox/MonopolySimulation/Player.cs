@@ -49,7 +49,7 @@ public class Player
     */
     public void MoveToAbsolute(int locationToMoveTo)
     {
-        Debug.Assert(locationToMoveTo >= 0 && locationToMoveTo < Space.GetSizeOfBoard());
+        Debug.Assert(locationToMoveTo >= 0 && locationToMoveTo < UserInterface.GetSizeOfBoard());
         
         // if moving to locationToMoveTo makes us loop around the board
         if (locationToMoveTo <= location)
@@ -66,7 +66,7 @@ public class Player
      */
      public void MoveToRelative(int distanceToMove)
     {
-        int sizeOfBoard = Space.GetSizeOfBoard();
+        int sizeOfBoard = UserInterface.GetSizeOfBoard();
         
         // move by the distanceToMove
         location += distanceToMove;
