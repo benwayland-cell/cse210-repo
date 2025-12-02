@@ -66,6 +66,7 @@ public class UserInterface
 
                 case LIST_GOALS:
                     ListGoals();
+                    Console.ReadLine();
                     break;
 
                 case SAVE_GOALS:
@@ -77,7 +78,7 @@ public class UserInterface
                     break;
 
                 case RECORD_EVENT:
-                    Console.WriteLine("Record event");
+                    RecordEvent();
                     break;
 
                 case QUIT:
@@ -172,10 +173,9 @@ public class UserInterface
         Console.WriteLine("\nThe Goals are:");
         for (int index = 0; index < goals.Count; index++)
         {
-            Console.Write($"{index}. ");
+            Console.Write($"{index + 1}. ");
             goals[index].Display();
         }
-        Console.ReadLine();
     }
 
     private static void SaveGoals()
@@ -209,5 +209,15 @@ public class UserInterface
         {
             goals.Add(Goal.ConvertStringToGoal(lines[index]));
         }
+    }
+
+    public static void RecordEvent()
+    {
+        ListGoals();
+
+        Console.Write("\nWhich Goal did you complete? ");
+        int userInput = GetUserInputInBounds(1, goals.Count);
+
+        score += goals[userInput - 1].CompleteGoal();
     }
 }

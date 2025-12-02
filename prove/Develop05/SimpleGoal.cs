@@ -25,22 +25,6 @@ public class SimpleGoal : Goal
         return new SimpleGoal(_name, _description, _pointValue);
     }
 
-    public override void Display()
-    {
-        // set what will go in between brackets to be an X if the goal has been completed
-        string completeString;
-        if (GetIsCompleted())
-        {
-            completeString = "X";
-        }
-        else
-        {
-            completeString = " ";
-        }
-
-        Console.WriteLine($"[{completeString}] {GetName()} ({GetDescription()})");
-    }
-
     /* Returns a string in the format:
     SimpleGoal name description pointValue
      */

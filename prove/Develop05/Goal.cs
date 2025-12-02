@@ -40,7 +40,6 @@ public abstract class Goal
     }
 
     public abstract int CompleteGoal();
-    public abstract void Display();
     public abstract string ConvertToString();
 
     protected static string GetNameFromUser()
@@ -74,5 +73,21 @@ public abstract class Goal
         {
             throw new InvalidOperationException($"The line of the text file could not be read: {inputString}");
         }
+    }
+
+    public virtual void Display()
+    {
+        // set what will go in between brackets to be an X if the goal has been completed
+        string completeString;
+        if (isCompleted)
+        {
+            completeString = "X";
+        }
+        else
+        {
+            completeString = " ";
+        }
+
+        Console.WriteLine($"[{completeString}] {name} ({description})");
     }
 }
