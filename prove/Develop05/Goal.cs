@@ -1,5 +1,6 @@
 
 using System.Diagnostics;
+using System.Drawing;
 using System.Runtime;
 
 public abstract class Goal
@@ -40,7 +41,6 @@ public abstract class Goal
     }
 
     public abstract int CompleteGoal();
-    public abstract string ConvertToString();
 
     protected static string GetNameFromUser()
     {
@@ -65,9 +65,17 @@ public abstract class Goal
         string[] inputSplit = inputString.Split(STRING_SEPERATOR);
         string identifier = inputSplit[0];
 
-        if (identifier.Equals("SimpleGoal"))
+        string _name = inputSplit[1];
+        string _description = inputSplit[2];
+        int _pointValue = int.Parse(inputSplit[3]);
+
+        if (identifier.Equals(SimpleGoal.IDENTIFIER))
         {
-            return new SimpleGoal(inputSplit[1], inputSplit[2], int.Parse(inputSplit[3]));
+            return new SimpleGoal(_name, _description, _pointValue);
+        }
+        if (identifier.Equals(EternalGoal.IDENTIFIER))
+        {
+            return new EternalGoal(_name, _description, _pointValue, int.Parse(inputSplit[4]));
         }
         else
         {
@@ -88,6 +96,14 @@ public abstract class Goal
             completeString = " ";
         }
 
-        Console.WriteLine($"[{completeString}] {name} ({description})");
+        Console.Write($"[{completeString}] {name} ({description})");
+    }
+    public virtual string ConvertToString()
+    {
+        string stringOfGoal = STRING_SEPERATOR +
+            name + STRING_SEPERATOR +
+            description + STRING_SEPERATOR +
+            pointValue;
+        return stringOfGoal;
     }
 }

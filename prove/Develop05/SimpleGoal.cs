@@ -1,6 +1,8 @@
 
 public class SimpleGoal : Goal
 {
+    public const string IDENTIFIER = "SimpleGoal";
+
     public SimpleGoal(string _name, string _description, int _pointValue) : base(_name, _description, _pointValue){}
 
     public override int CompleteGoal()
@@ -14,6 +16,11 @@ public class SimpleGoal : Goal
         return GetPointValue();
     }
 
+    public override void Display()
+    {
+        base.Display();
+        Console.WriteLine();
+    }
 
     /* Uses user input to make a new SimpleGoal */
     public static SimpleGoal New()
@@ -30,10 +37,7 @@ public class SimpleGoal : Goal
      */
     public override string ConvertToString()
     {
-        string stringOfGoal = "SimpleGoal" + STRING_SEPERATOR +
-            GetName() + STRING_SEPERATOR +
-            GetDescription() + STRING_SEPERATOR +
-            GetPointValue();
+        string stringOfGoal = IDENTIFIER + base.ConvertToString();
         return stringOfGoal;
     }
 

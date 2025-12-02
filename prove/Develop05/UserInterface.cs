@@ -136,7 +136,8 @@ public class UserInterface
                 break;
 
             case ETERNAL_GOAL:
-                Console.WriteLine("Run eternal goal");
+                Console.WriteLine();
+                goals.Add(EternalGoal.New());
                 break;
 
             case CHECKLIST_GOAL:
