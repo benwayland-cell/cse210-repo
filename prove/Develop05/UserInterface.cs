@@ -141,7 +141,8 @@ public class UserInterface
                 break;
 
             case CHECKLIST_GOAL:
-                Console.WriteLine("Run checklist goal");
+                Console.WriteLine();
+                goals.Add(ChecklistGoal.New());
                 break;
         }
     }
