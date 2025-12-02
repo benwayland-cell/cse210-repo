@@ -3,6 +3,28 @@ public class UserInterface
 {
     private static int score;
 
+    public static int GetUserInputInBounds(int startBound, int endBound)
+    {
+        string userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                if (startBound <= userInputInt && userInputInt <= endBound)
+                {
+                    return userInputInt;
+                }
+            }
+
+            Console.Write($"User input invalid, Try again. ({startBound}-{endBound}) ");
+            
+        }
+    }
+
 
     public static void RunGoalProgram()
     {
@@ -12,7 +34,7 @@ public class UserInterface
         while (!done)
         {
             DisplayMainMenu();
-            int userInput = int.Parse(Console.ReadLine());
+            int userInput = GetUserInputInBounds(CREATE_NEW_GOAL, QUIT);
 
             switch (userInput)
             {
@@ -70,7 +92,7 @@ public class UserInterface
         Console.WriteLine();
         DisplayGoalCreationMenu();
 
-        int userInput = int.Parse(Console.ReadLine());
+        int userInput = GetUserInputInBounds(SIMPLE_GOAL, CHECKLIST_GOAL);
 
         switch (userInput)
         {
@@ -81,7 +103,7 @@ public class UserInterface
             case ETERNAL_GOAL:
                 Console.WriteLine("Run eternal goal");
                 break;
-                
+
             case CHECKLIST_GOAL:
                 Console.WriteLine("Run checklist goal");
                 break;
