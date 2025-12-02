@@ -1,4 +1,5 @@
 
+using System.Diagnostics;
 using System.Runtime;
 
 public abstract class Goal
@@ -7,6 +8,8 @@ public abstract class Goal
     private string description;
     private bool isCompleted = false;
     private int pointValue;
+
+    protected const string STRING_SEPERATOR = "~|~";
 
     public Goal(string _name, string _description, int _pointValue)
     {
@@ -36,7 +39,7 @@ public abstract class Goal
         isCompleted = true;
     }
 
-    public abstract void CompleteGoal();
+    public abstract int CompleteGoal();
     public abstract void Display();
     public abstract string ConvertToString();
 
@@ -58,8 +61,18 @@ public abstract class Goal
         return UserInterface.GetUserInputUnbounded();
     }
 
-    public string ConvertStringToGoal(string inputString)
+    public static Goal ConvertStringToGoal(string inputString)
     {
-        throw new NotImplementedException();
+        string[] inputSplit = inputString.Split(STRING_SEPERATOR);
+        string identifier = inputSplit[0];
+
+        if (identifier.Equals("SimpleGoal"))
+        {
+            return new SimpleGoal(inputSplit[1], inputSplit[2], int.Parse(inputSplit[3]));
+        }
+        else
+        {
+            throw new InvalidOperationException($"The line of the text file could not be read: {inputString}");
+        }
     }
 }

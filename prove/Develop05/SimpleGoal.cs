@@ -3,9 +3,15 @@ public class SimpleGoal : Goal
 {
     public SimpleGoal(string _name, string _description, int _pointValue) : base(_name, _description, _pointValue){}
 
-    public override void CompleteGoal()
+    public override int CompleteGoal()
     {
-        throw new NotImplementedException();
+        if (GetIsCompleted())
+        {
+            return 0;
+        }
+
+        Complete();
+        return GetPointValue();
     }
 
 
@@ -35,9 +41,16 @@ public class SimpleGoal : Goal
         Console.WriteLine($"[{completeString}] {GetName()} ({GetDescription()})");
     }
 
+    /* Returns a string in the format:
+    SimpleGoal name description pointValue
+     */
     public override string ConvertToString()
     {
-        throw new NotImplementedException();
+        string stringOfGoal = "SimpleGoal" + STRING_SEPERATOR +
+            GetName() + STRING_SEPERATOR +
+            GetDescription() + STRING_SEPERATOR +
+            GetPointValue();
+        return stringOfGoal;
     }
 
 }

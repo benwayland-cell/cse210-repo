@@ -69,11 +69,11 @@ public class UserInterface
                     break;
 
                 case SAVE_GOALS:
-                    Console.WriteLine("Save goals");
+                    SaveGoals();
                     break;
 
                 case LOAD_GOALS:
-                    Console.WriteLine("Load goals");
+                    LoadGoals();
                     break;
 
                 case RECORD_EVENT:
@@ -169,10 +169,45 @@ public class UserInterface
 
     private static void ListGoals()
     {
-        foreach (Goal goal in goals)
+        Console.WriteLine("\nThe Goals are:");
+        for (int index = 0; index < goals.Count; index++)
         {
-            goal.Display();
+            Console.Write($"{index}. ");
+            goals[index].Display();
         }
         Console.ReadLine();
+    }
+
+    private static void SaveGoals()
+    {
+        Console.WriteLine("\nGive the filename of where to save the goals. ");
+        string filename = Console.ReadLine();
+
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            outputFile.WriteLine(score);
+
+            foreach (Goal goal in goals)
+            {
+                outputFile.WriteLine(goal.ConvertToString());
+            }
+        }
+    }
+
+    private static void LoadGoals()
+    {
+        goals = new List<Goal>();
+
+        Console.WriteLine("Give the name of the file to read from. ");
+        string filename = Console.ReadLine();
+
+        string[] lines = System.IO.File.ReadAllLines(filename);
+
+        score = int.Parse(lines[0]);
+
+        for (int index = 1; index < lines.Length; index++ )
+        {
+            goals.Add(Goal.ConvertStringToGoal(lines[index]));
+        }
     }
 }
