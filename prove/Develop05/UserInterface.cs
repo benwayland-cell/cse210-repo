@@ -3,13 +3,6 @@ public class UserInterface
 {
     private static int score;
 
-    // constants used for the menu switch case
-    private const int CREATE_NEW_GOAL = 1;
-    private const int LIST_GOALS = 2;
-    private const int SAVE_GOALS = 3;
-    private const int LOAD_GOALS = 4;
-    private const int RECORD_EVENT = 5;
-    private const int QUIT = 6;
 
     public static void RunGoalProgram()
     {
@@ -18,13 +11,13 @@ public class UserInterface
         bool done = false;
         while (!done)
         {
-            DisplayMenu();
+            DisplayMainMenu();
             int userInput = int.Parse(Console.ReadLine());
 
             switch (userInput)
             {
                 case CREATE_NEW_GOAL:
-                    Console.WriteLine("Create new goal");
+                    CreateNewGoal();
                     break;
                 case LIST_GOALS:
                     Console.WriteLine("List goals");
@@ -46,7 +39,15 @@ public class UserInterface
         }
     }
 
-    private static string[] menuArray =
+    // constants used for the menu switch case
+    private const int CREATE_NEW_GOAL = 1;
+    private const int LIST_GOALS = 2;
+    private const int SAVE_GOALS = 3;
+    private const int LOAD_GOALS = 4;
+    private const int RECORD_EVENT = 5;
+    private const int QUIT = 6;
+
+    private static string[] mainMenuArray =
     {
         $"You have {score} points.",
         "",
@@ -59,14 +60,43 @@ public class UserInterface
         $"   {QUIT}. Quit"
     };
 
-    public static void DisplayMenu()
+    private static void CreateNewGoal()
+    {
+        Console.WriteLine();
+        DisplayGoalCreationMenu();
+    }
+
+    /* Displays the main menu */
+    private static void DisplayMainMenu()
     {
         Console.Clear();
-        foreach(string str in menuArray)
+        foreach(string str in mainMenuArray)
         {
             Console.WriteLine(str);
         }
 
         Console.Write("Select a choice from the menu: ");
+    }
+
+    // consts used for the goal creation switch case
+    private const int SIMPLE_GOAL = 1;
+    private const int ETERNAL_GOAL = 2;
+    private const int CHECKLIST_GOAL = 3;
+
+    private static string[] goalCreationMenuArray =
+    {
+        "The types of Goals are:",
+        $"   {SIMPLE_GOAL}.Simple Goal",
+        $"   {ETERNAL_GOAL}.Eternal Goal",
+        $"   {CHECKLIST_GOAL}.Checklist Goal"
+    };
+
+    private static void DisplayGoalCreationMenu()
+    {
+        foreach(string str in goalCreationMenuArray)
+        {
+            Console.WriteLine(str);
+        }
+        Console.Write("Which type of goal would you like to create? ");
     }
 }
