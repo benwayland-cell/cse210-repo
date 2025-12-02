@@ -2,6 +2,7 @@
 public class UserInterface
 {
     private static int score;
+    private static List<Goal> goals;
 
     public static int GetUserInputInBounds(int startBound, int endBound)
     {
@@ -21,6 +22,25 @@ public class UserInterface
             }
 
             Console.Write($"User input invalid, Try again. ({startBound}-{endBound}) ");
+            
+        }
+    }
+
+    public static int GetUserInputUnbounded()
+    {
+        string userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                return userInputInt;
+            }
+
+            Console.Write($"User input invalid, Try again. (Input must be an integer)");
             
         }
     }
