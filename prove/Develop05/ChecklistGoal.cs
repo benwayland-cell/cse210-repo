@@ -1,6 +1,10 @@
 
+using System.Data.Common;
+
 public class ChecklistGoal : Goal
 {
+    public const string IDENTIFIER = "ChecklistGoal";
+    
     private int numNeededToFullyComplete;
     private int bonusPointValue;
     private int timesCompleted;
@@ -41,7 +45,12 @@ public class ChecklistGoal : Goal
 
     public override string ConvertToString()
     {
-        return base.ConvertToString();
+        string stringOfGoal =  IDENTIFIER + base.ConvertToString() + STRING_SEPERATOR +
+        numNeededToFullyComplete + STRING_SEPERATOR +
+        bonusPointValue + STRING_SEPERATOR +
+        timesCompleted;
+
+        return stringOfGoal;
     }
 
     public override void Display()

@@ -73,9 +73,13 @@ public abstract class Goal
         {
             return new SimpleGoal(_name, _description, _pointValue);
         }
-        if (identifier.Equals(EternalGoal.IDENTIFIER))
+        else if (identifier.Equals(EternalGoal.IDENTIFIER))
         {
             return new EternalGoal(_name, _description, _pointValue, int.Parse(inputSplit[4]));
+        }
+        else if (identifier.Equals(ChecklistGoal.IDENTIFIER))
+        {
+            return new ChecklistGoal(_name, _description, _pointValue, int.Parse(inputSplit[4]), int.Parse(inputSplit[5]), int.Parse(inputSplit[6]));
         }
         else
         {
