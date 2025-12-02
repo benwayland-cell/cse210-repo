@@ -19,18 +19,23 @@ public class UserInterface
                 case CREATE_NEW_GOAL:
                     CreateNewGoal();
                     break;
+
                 case LIST_GOALS:
                     Console.WriteLine("List goals");
                     break;
+
                 case SAVE_GOALS:
                     Console.WriteLine("Save goals");
                     break;
+
                 case LOAD_GOALS:
                     Console.WriteLine("Load goals");
                     break;
+
                 case RECORD_EVENT:
                     Console.WriteLine("Record event");
                     break;
+
                 case QUIT:
                     done = true;
                     break;
@@ -64,6 +69,23 @@ public class UserInterface
     {
         Console.WriteLine();
         DisplayGoalCreationMenu();
+
+        int userInput = int.Parse(Console.ReadLine());
+
+        switch (userInput)
+        {
+            case SIMPLE_GOAL:
+                Console.WriteLine("Run simple goal");
+                break;
+
+            case ETERNAL_GOAL:
+                Console.WriteLine("Run eternal goal");
+                break;
+                
+            case CHECKLIST_GOAL:
+                Console.WriteLine("Run checklist goal");
+                break;
+        }
     }
 
     /* Displays the main menu */
