@@ -66,6 +66,7 @@ public class UserInterface
 
                 case LIST_GOALS:
                     ListGoals();
+                    Console.WriteLine("\nPress enter to continue");
                     Console.ReadLine();
                     break;
 
@@ -85,7 +86,6 @@ public class UserInterface
                     done = true;
                     break;
             }
-            Thread.Sleep(1000);
         }
     }
 
