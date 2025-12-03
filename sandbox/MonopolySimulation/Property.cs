@@ -22,12 +22,12 @@ public abstract class Property : Space
 
     private void Purchase(Player purchasingPlayer)
     {
-        
+        throw new NotImplementedException();
     }
 
     private void RunAuction(Player[] playerList)
     {
-        
+        throw new NotImplementedException();
     }
 
     protected abstract void PayRent(Player payingPlayer);

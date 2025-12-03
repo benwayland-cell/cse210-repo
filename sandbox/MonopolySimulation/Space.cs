@@ -16,6 +16,7 @@ public abstract class Space
     }
 
     public abstract void LandOnSpace(Player currentPlayer);
+    public abstract void Display();
 
     /* Returns an array of the default board */
     static public Space[] GetBoard()

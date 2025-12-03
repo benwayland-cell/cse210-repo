@@ -39,4 +39,14 @@ public class Card
                 break;
         }
     }
+
+    public static List<Card> GetChanceDeck()
+    {
+        throw new NotImplementedException();
+    }
+
+    public static List<Card> GetCommunityChestDeck()
+    {
+        throw new NotImplementedException();
+    }
 }

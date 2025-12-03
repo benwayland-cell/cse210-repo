@@ -18,4 +18,9 @@ public class StandardProperty : Property
         Console.WriteLine($"{payingPlayer.GetName()} pay {GetPrice()}");
     }
 
+    public override void Display()
+    {
+        throw new NotImplementedException();
+    }
+
 }
