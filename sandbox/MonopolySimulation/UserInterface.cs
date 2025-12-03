@@ -28,7 +28,16 @@ public class UserInterface
 
     static private void DisplayBoard()
     {
-        
+        throw new NotImplementedException();
     }
     
+    public static void DrawChanceCard()
+    {
+        throw new NotImplementedException();
+    }
+
+    public static void DrawCommunityChestCard()
+    {
+        throw new NotImplementedException();
+    }
 }

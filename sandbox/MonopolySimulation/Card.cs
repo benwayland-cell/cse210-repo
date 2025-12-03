@@ -24,7 +24,7 @@ public class Card
         otherData = _otherData;
     }
 
-    public void RunCard(Player player)
+    public void PlayCard(Player player)
     {
         switch (cardMethodKey)
         {
