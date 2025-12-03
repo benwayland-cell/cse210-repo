@@ -1,15 +1,14 @@
 
-public class NothingSpace : Space
+public class Jail : Space
 {
-    public NothingSpace(string _name) : base (_name)
+    public Jail(string _name) : base(_name)
     {
         
     }
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        // do nothing
-        Console.WriteLine("Landed on an empty space");
+        throw new NotImplementedException();
     }
 
     public override void Display()
