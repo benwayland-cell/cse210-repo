@@ -2,17 +2,23 @@
 public abstract class Property : Space
 {
     private int price;
-    // private Player owner = null;
+    private Player ? owner;
     private int numOfSameTypeOwned = 0;
 
     public Property(string _name, int _price) : base(_name)
     {
         price = _price;
+        owner = null;
     }
 
     protected int GetPrice()
     {
         return price;
+    }
+
+    public Player ? GetOwner()
+    {
+        return owner;
     }
 
     public override void LandOnSpace(Player currentPlayer)

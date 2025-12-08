@@ -41,7 +41,10 @@ public class Player
         ownedProperties.Add(propertyToAdd);
     }
 
-    // public void RemoveProperty()
+    public void RemoveProperty()
+    {
+        throw new NotImplementedException();
+    }
 
     /* Moves the player to the index given and checks if they passed go.
     Parameters:
