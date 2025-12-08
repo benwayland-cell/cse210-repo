@@ -20,17 +20,32 @@ public class UserInterface
     {
         // init data
         playerList = _playerList;
-        chanceDeck = Card.GetChanceDeck();
-        communityChestDeck = Card.GetCommunityChestDeck();
+        // chanceDeck = Card.GetChanceDeck();
+        // communityChestDeck = Card.GetCommunityChestDeck();
         board = Space.GetBoard();
         sizeOfBoard = board.Length;
 
+        DisplayPlayers();
+        DisplayBoard();
     }
 
-    /*  */
+    /* Displays the board in its current state */
     static private void DisplayBoard()
     {
-        throw new NotImplementedException();
+        for(int index = 0; index < board.Length; index++)
+        {
+            Console.Write($"{index}. ");
+            board[index].Display();
+        }
+    }
+
+    private static void DisplayPlayers()
+    {
+        for(int index = 0; index < playerList.Length; index++)
+        {
+            Console.Write($"{index}. ");
+            playerList[index].Display();
+        }
     }
     
     /* Draws and runs a chance card from the chanceDeck */

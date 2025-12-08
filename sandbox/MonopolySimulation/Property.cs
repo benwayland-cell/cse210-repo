@@ -11,7 +11,7 @@ public abstract class Property : Space
         owner = null;
     }
 
-    protected int GetPrice()
+    public int GetPrice()
     {
         return price;
     }
@@ -19,6 +19,11 @@ public abstract class Property : Space
     public Player ? GetOwner()
     {
         return owner;
+    }
+
+    public int GetNumOfSameTypeOwned()
+    {
+        return numOfSameTypeOwned;
     }
 
     public override void LandOnSpace(Player currentPlayer)

@@ -33,5 +33,16 @@ class Program
         // testPlayer.Display();
         // testPlayer.MoveToRelative(1);
         // testPlayer.Display();
+
+
+        Player[] testPlayerArray =
+        {
+            new Player("Test name 1"),
+            new Player("Test name 2"),
+            new Player("Test name 3"),
+            new Player("Test name 4")
+        };
+
+        UserInterface.MainLoop(testPlayerArray);
     }
 }

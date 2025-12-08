@@ -9,11 +9,11 @@ public class NothingSpace : Space
     public override void LandOnSpace(Player currentPlayer)
     {
         // do nothing
-        Console.WriteLine("Landed on an empty space");
+        Console.WriteLine($"Landed on an empty space: {GetName()}");
     }
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Name: {GetName()}");
     }
 }

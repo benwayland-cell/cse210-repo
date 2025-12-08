@@ -20,7 +20,9 @@ public class StandardProperty : Property
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine(
+            $"Name: {GetName()}  \tPrice: {GetPrice()}  \tColor: {color}  \tPropsNeededForMonop: {propertiesNeededForMonopoly}" + 
+            $"\tOwner: {GetOwner()}  \tNumOfHouses: {numOfHouses}  \tNumOfSameTypeOwned: {GetNumOfSameTypeOwned()}");
     }
 
 }
