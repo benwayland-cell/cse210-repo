@@ -89,13 +89,54 @@ public class Player
         money += 200;
     }
 
-    public void RunTurn()
-    {
-        Console.WriteLine($"Run {name}'s turn");
-    }
-
     public void Display()
     {
         Console.WriteLine($"Name: {name}  \tLocation: {location}  \tMoney: {money}");
     }
+
+    private const int ROLL_DICE = 1;
+    private const int BUY_HOUSES = 2;
+    private const int TRADE_WITH_OTHERS = 3;
+
+    private string[] playerMenu =
+    {
+        "What do you want to do?",
+        $"{ROLL_DICE}. Roll dice",
+        $"{BUY_HOUSES}. Buy houses",
+        $"{TRADE_WITH_OTHERS}. Trade with others"
+    };
+
+    public void RunTurn()
+    {
+        Console.Clear();
+        Console.WriteLine($"{name}'s turn:");
+        Console.WriteLine($"Location: {location}");
+        Console.WriteLine($"Money: {money}\n");
+
+        foreach (string line in playerMenu)
+        {
+            Console.WriteLine(line);
+        }
+
+        int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, TRADE_WITH_OTHERS);
+
+        switch (userInput)
+        {
+            case ROLL_DICE:
+                Console.WriteLine("Roll Dice");
+                break;
+
+            case BUY_HOUSES:
+                Console.WriteLine("Buy houses");
+                break;
+
+            case TRADE_WITH_OTHERS:
+                Console.WriteLine("Trade with others");
+                break;
+
+        }
+        Console.WriteLine();
+
+    }
+
 }
