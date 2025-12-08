@@ -25,14 +25,27 @@ public class UserInterface
         board = Space.GetBoard();
         sizeOfBoard = board.Length;
 
-        while (playerList.Count() > 1)
+        // loop initialization
+
+        int currentPlayerIndex = 0;
+        Player currentPlayer;
+
+        int debugCounter = 0;
+        int breakNum = 10;
+
+        while (playerList.Count() > 1 && debugCounter < breakNum)
         {
-            break;
+            currentPlayer = playerList[currentPlayerIndex];
+
+            currentPlayer.RunTurn();
+
+            currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
+            debugCounter++;
         }
     }
 
     /* Displays the board in its current state */
-    static private void DisplayBoard()
+    public static void DisplayBoard()
     {
         for(int index = 0; index < board.Length; index++)
         {
@@ -41,7 +54,7 @@ public class UserInterface
         }
     }
 
-    private static void DisplayPlayers()
+    public static void DisplayPlayers()
     {
         for(int index = 0; index < playerList.Count; index++)
         {
