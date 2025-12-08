@@ -8,11 +8,9 @@ public class UserInterface
     private static List<Card> chanceDeck;
     private static List<Card> communityChestDeck;
 
-    private static int sizeOfBoard;
-
     static public int GetSizeOfBoard()
     {
-        return sizeOfBoard;
+        return board.Count();
     }
 
     /* The function that runs the game */
@@ -23,7 +21,6 @@ public class UserInterface
         // chanceDeck = Card.GetChanceDeck();
         // communityChestDeck = Card.GetCommunityChestDeck();
         board = Space.GetBoard();
-        sizeOfBoard = board.Length;
 
         // loop initialization
 
@@ -73,6 +70,16 @@ public class UserInterface
     public static void DrawCommunityChestCard()
     {
         throw new NotImplementedException();
+    }
+
+    /* Makes the given player land on the given space
+    Parameters:
+        givenSpace: the index of the space they want to land on
+        givenPlayer: the play that will land on that space
+     */
+    public static void LandOnGivenSpace(int givenSpace, Player givenPlayer)
+    {
+        board[givenSpace].LandOnSpace(givenPlayer);
     }
 
     public static int GetUserInputInBounds(int startBound, int endBound)

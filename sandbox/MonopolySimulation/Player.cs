@@ -1,5 +1,6 @@
 
 using System.Diagnostics;
+using System.Numerics;
 using System.Reflection;
 
 public class Player
@@ -89,6 +90,11 @@ public class Player
         money += 200;
     }
 
+    public void GoToJail()
+    {
+        Console.WriteLine("Go to Jail, not implemented.");
+    }
+
     public void Display()
     {
         Console.WriteLine($"Name: {name}  \tLocation: {location}  \tMoney: {money}");
@@ -123,20 +129,62 @@ public class Player
         switch (userInput)
         {
             case ROLL_DICE:
-                Console.WriteLine("Roll Dice");
+                RollDice();
                 break;
 
             case BUY_HOUSES:
-                Console.WriteLine("Buy houses");
+                Console.WriteLine("Buy houses, not implemented.");
                 break;
 
             case TRADE_WITH_OTHERS:
-                Console.WriteLine("Trade with others");
+                Console.WriteLine("Trade with others, not implemented.");
                 break;
 
         }
         Console.WriteLine();
+    }
 
+    /* Rolls dice and moves the player by that much */
+    private void RollDice()
+    {
+        bool rolledDoubles;
+        int dieTotal;
+        int timesDoubleHaveBeenRolled = 0;
+        
+        do
+        {
+            rolledDoubles = Roll2D6(out dieTotal);
+            MoveToRelative(dieTotal);
+            UserInterface.LandOnGivenSpace(dieTotal, this);
+
+            Console.WriteLine($"You rolled: {dieTotal}");
+
+            if (rolledDoubles)
+            {  
+                timesDoubleHaveBeenRolled++;
+                if (timesDoubleHaveBeenRolled == 3)
+                {
+                    GoToJail();
+                    break;
+                }
+            }
+
+        } while (rolledDoubles);
+    }
+
+    /* Rolls 2d6.
+    Parameters:
+        total: the number that will be changed as a result of this function to be 2d6
+    Return:
+        If we rolled doubles
+     */
+    private bool Roll2D6(out int total)
+    {
+        Random random = new Random();
+        int die1 = random.Next(1, 7);
+        int die2 = random.Next(1, 7);
+        total = die1 + die2;
+        return die1 == die2;
     }
 
 }
