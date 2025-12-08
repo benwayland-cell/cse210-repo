@@ -61,7 +61,7 @@ public abstract class Space
             new StandardProperty("N. Carolina Ave", 300, "G", 3),
             // new CommunityChest(),
             new StandardProperty("Pennsylvania Ave", 320, "G", 3),
-            new RailRoad("Short Line", 200),
+            // new RailRoad("Short Line", 200),
             // new Chance(),
             new StandardProperty("Park Place", 350, "B", 3),
             // new LuxuryTax(),

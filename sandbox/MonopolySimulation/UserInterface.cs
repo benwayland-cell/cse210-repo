@@ -27,8 +27,6 @@ public class UserInterface
         int currentPlayerIndex = 0;
         Player currentPlayer;
 
-        int breakNum = 10;
-
         while (playerList.Count() > 1)
         {
             currentPlayer = playerList[currentPlayerIndex];

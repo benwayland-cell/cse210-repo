@@ -103,13 +103,17 @@ public class Player
     private const int ROLL_DICE = 1;
     private const int BUY_HOUSES = 2;
     private const int TRADE_WITH_OTHERS = 3;
+    private const int VIEW_PLAYERS = 4;
+    private const int VIEW_BOARD = 5;
 
     private string[] playerMenu =
     {
         "What do you want to do?",
         $"{ROLL_DICE}. Roll dice",
         $"{BUY_HOUSES}. Buy houses",
-        $"{TRADE_WITH_OTHERS}. Trade with others"
+        $"{TRADE_WITH_OTHERS}. Trade with others",
+        $"{VIEW_PLAYERS}. View Players",
+        $"{VIEW_BOARD}. View Board"
     };
 
     public void RunTurn()
@@ -119,29 +123,43 @@ public class Player
         Console.WriteLine($"Location: {location}");
         Console.WriteLine($"Money: {money}\n");
 
-        foreach (string line in playerMenu)
+
+        bool done = false;
+        while (!done)
         {
-            Console.WriteLine(line);
+            foreach (string line in playerMenu)
+            {
+                Console.WriteLine(line);
+            }
+            
+            int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, VIEW_BOARD);
+
+            switch (userInput)
+            {
+                case ROLL_DICE:
+                    RollDice();
+                    done = true;
+                    break;
+
+                case BUY_HOUSES:
+                    Console.WriteLine("Buy houses, not implemented.");
+                    break;
+
+                case TRADE_WITH_OTHERS:
+                    Console.WriteLine("Trade with others, not implemented.");
+                    break;
+                
+                case VIEW_PLAYERS:
+                    UserInterface.DisplayPlayers();
+                    break;
+
+                case VIEW_BOARD:
+                    UserInterface.DisplayBoard();
+                    break;
+
+            }
+            Console.WriteLine();
         }
-
-        int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, TRADE_WITH_OTHERS);
-
-        switch (userInput)
-        {
-            case ROLL_DICE:
-                RollDice();
-                break;
-
-            case BUY_HOUSES:
-                Console.WriteLine("Buy houses, not implemented.");
-                break;
-
-            case TRADE_WITH_OTHERS:
-                Console.WriteLine("Trade with others, not implemented.");
-                break;
-
-        }
-        Console.WriteLine();
     }
 
     /* Rolls dice and moves the player by that much */
