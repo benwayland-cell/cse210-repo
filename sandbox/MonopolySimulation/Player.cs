@@ -94,6 +94,6 @@ public class Player
 
     public void Display()
     {
-        Console.WriteLine($"Location: {location}, Money: {money}");
+        Console.WriteLine($"Name: {name}  \tLocation: {location}  \tMoney: {money}");
     }
 }
