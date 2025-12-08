@@ -74,4 +74,45 @@ public class UserInterface
     {
         throw new NotImplementedException();
     }
+
+    public static int GetUserInputInBounds(int startBound, int endBound)
+    {
+        string userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                if (startBound <= userInputInt && userInputInt <= endBound)
+                {
+                    return userInputInt;
+                }
+            }
+
+            Console.Write($"User input invalid, Try again. ({startBound}-{endBound}) ");
+            
+        }
+    }
+
+    public static int GetUserInputUnbounded()
+    {
+        string userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                return userInputInt;
+            }
+
+            Console.Write($"User input invalid, Try again. (Input must be an integer)");
+            
+        }
+    }
 }
