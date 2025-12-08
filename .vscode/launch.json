@@ -172,18 +172,18 @@
         //     "stopAtEntry": false
         // },
 
-        {
-            "name": "Develop 05 (Goal Tracker)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build-prove-Develop05",
-            "program": "${workspaceFolder}/prove/Develop05/bin/Debug/net8.0/Develop05.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/prove/Develop05",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "stopAtEntry": false
-        },
+        // {
+        //     "name": "Develop 05 (Goal Tracker)",
+        //     "type": "coreclr",
+        //     "request": "launch",
+        //     "preLaunchTask": "build-prove-Develop05",
+        //     "program": "${workspaceFolder}/prove/Develop05/bin/Debug/net8.0/Develop05.dll",
+        //     "args": [],
+        //     "cwd": "${workspaceFolder}/prove/Develop05",
+        //     "console": "integratedTerminal",
+        //     "internalConsoleOptions": "neverOpen",
+        //     "stopAtEntry": false
+        // },
 
         // {
         //     "name": "Final Project (Open ended)",
