@@ -5,8 +5,8 @@ public class UserInterface
 {
     private static Space[] board;
     private static Player[] playerList;
-    // private List<Card> chanceDeck
-    // private List<Card> communityChestDeck
+    private static List<Card> chanceDeck;
+    private static List<Card> communityChestDeck;
 
     private static int sizeOfBoard;
 
@@ -19,8 +19,8 @@ public class UserInterface
     {
         // init data
         playerList = _playerList;
-        // List<Card> chanceDeck = Card.GetChanceDeck();
-        // List<Card> communityChestDeck = Card.GetCommunityChestDeck();
+        chanceDeck = Card.GetChanceDeck();
+        communityChestDeck = Card.GetCommunityChestDeck();
         board = Space.GetBoard();
         sizeOfBoard = board.Length;
 
