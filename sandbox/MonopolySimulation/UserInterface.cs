@@ -15,6 +15,7 @@ public class UserInterface
         return sizeOfBoard;
     }
 
+    /* The function that runs the game */
     static public void MainLoop(Player[] _playerList)
     {
         // init data
@@ -26,16 +27,19 @@ public class UserInterface
 
     }
 
+    /*  */
     static private void DisplayBoard()
     {
         throw new NotImplementedException();
     }
     
+    /* Draws and runs a chance card from the chanceDeck */
     public static void DrawChanceCard()
     {
         throw new NotImplementedException();
     }
 
+    /* Draws and runs a community chest card from the community chest deck */
     public static void DrawCommunityChestCard()
     {
         throw new NotImplementedException();
