@@ -1,7 +1,7 @@
 
 public class LuxuryTax : Space
 {
-    public LuxuryTax(string _name) : base(_name)
+    public LuxuryTax() : base("Luxury Tax")
     {
         
     }

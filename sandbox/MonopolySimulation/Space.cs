@@ -24,12 +24,11 @@ public abstract class Space
         Space[] board =
         {
             new NothingSpace("Go"),
-            new StandardProperty("Test name 1", 100, "A", 3),
-            new StandardProperty("Test name 2", 200, "A", 3),
-            new StandardProperty("Test name 3", 300, "A", 3),
+            new StandardProperty("Mediterranean Ave", 60, "Br", 2),
+            new CommunityChest(),
+            new StandardProperty("Baltic Ave", 60, "Br", 2),
+            new StandardProperty("Test A 3", 150, "Br", 3),
             new NothingSpace("Free Parking"),
-            new StandardProperty("Test name 4", 400, "B", 2),
-            new StandardProperty("Test name 5", 500, "B", 2)
         };
         return board;
     }

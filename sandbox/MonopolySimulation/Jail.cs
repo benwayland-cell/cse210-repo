@@ -1,7 +1,7 @@
 
 public class Jail : Space
 {
-    public Jail(string _name) : base(_name)
+    public Jail() : base("Jail")
     {
         
     }

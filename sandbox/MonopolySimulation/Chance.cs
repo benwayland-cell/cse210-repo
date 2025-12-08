@@ -1,7 +1,7 @@
 
 public class Chance : Space
 {
-    public Chance(string _name) : base(_name)
+    public Chance() : base("Chance")
     {
         
     }

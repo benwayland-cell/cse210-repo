@@ -1,7 +1,7 @@
 
 public class IncomeTax : Space
 {
-    public IncomeTax(string _name) : base(_name)
+    public IncomeTax() : base("Income Tax")
     {
         
     }

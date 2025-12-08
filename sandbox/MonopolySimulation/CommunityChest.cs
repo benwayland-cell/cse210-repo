@@ -1,7 +1,7 @@
 
 public class CommunityChest : Space
 {
-    public CommunityChest(string _name) : base(_name)
+    public CommunityChest() : base("Community Chest")
     {
         
     }
