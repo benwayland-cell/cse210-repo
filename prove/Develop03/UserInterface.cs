@@ -248,7 +248,7 @@ class UserInterface
     /* The loop that runs the main menu */
     public static void MainLoop()
     {
-        List<Scripture> scriptureList = ConvertFileToScriptures("startScriptures");
+        List<Scripture> scriptureList = new List<Scripture>();
         
         int userInput = 0;
         bool done = false;
