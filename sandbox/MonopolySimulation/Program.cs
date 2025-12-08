@@ -35,7 +35,7 @@ class Program
         // testPlayer.Display();
 
 
-        Player[] testPlayerArray =
+        List<Player> testPlayerArray = new List<Player>
         {
             new Player("Test name 1"),
             new Player("Test name 2"),

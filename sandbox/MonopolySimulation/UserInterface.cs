@@ -4,7 +4,7 @@ using System.Reflection.Metadata;
 public class UserInterface
 {
     private static Space[] board;
-    private static Player[] playerList;
+    private static List<Player> playerList;
     private static List<Card> chanceDeck;
     private static List<Card> communityChestDeck;
 
@@ -16,7 +16,7 @@ public class UserInterface
     }
 
     /* The function that runs the game */
-    static public void MainLoop(Player[] _playerList)
+    static public void MainLoop(List<Player> _playerList)
     {
         // init data
         playerList = _playerList;
@@ -25,8 +25,10 @@ public class UserInterface
         board = Space.GetBoard();
         sizeOfBoard = board.Length;
 
-        DisplayPlayers();
-        DisplayBoard();
+        while (playerList.Count() > 1)
+        {
+            break;
+        }
     }
 
     /* Displays the board in its current state */
@@ -41,7 +43,7 @@ public class UserInterface
 
     private static void DisplayPlayers()
     {
-        for(int index = 0; index < playerList.Length; index++)
+        for(int index = 0; index < playerList.Count; index++)
         {
             Console.Write($"{index}. ");
             playerList[index].Display();

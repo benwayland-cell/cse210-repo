@@ -29,6 +29,8 @@ public class Player
     public void UpdateMoney(int amountToChange)
     {
         money += amountToChange;
+
+        // need to implement going below 0
     }
 
     public void GetJailCard()
