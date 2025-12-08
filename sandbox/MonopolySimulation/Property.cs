@@ -28,7 +28,7 @@ public abstract class Property : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine("Landed on space");
+        Console.WriteLine($"Landed on {GetName()}, not implemented");
     }
 
     private void Purchase(Player purchasingPlayer)

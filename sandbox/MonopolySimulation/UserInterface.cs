@@ -27,17 +27,17 @@ public class UserInterface
         int currentPlayerIndex = 0;
         Player currentPlayer;
 
-        int debugCounter = 0;
         int breakNum = 10;
 
-        while (playerList.Count() > 1 && debugCounter < breakNum)
+        while (playerList.Count() > 1)
         {
             currentPlayer = playerList[currentPlayerIndex];
 
             currentPlayer.RunTurn();
 
             currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
-            debugCounter++;
+
+            Console.ReadLine();
         }
     }
 

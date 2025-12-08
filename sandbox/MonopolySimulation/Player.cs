@@ -154,10 +154,12 @@ public class Player
         do
         {
             rolledDoubles = Roll2D6(out dieTotal);
-            MoveToRelative(dieTotal);
-            UserInterface.LandOnGivenSpace(dieTotal, this);
-
             Console.WriteLine($"You rolled: {dieTotal}");
+
+            MoveToRelative(dieTotal);
+            Console.WriteLine($"Location {location}, Doubles: {rolledDoubles}");
+            UserInterface.LandOnGivenSpace(location, this);
+
 
             if (rolledDoubles)
             {  
