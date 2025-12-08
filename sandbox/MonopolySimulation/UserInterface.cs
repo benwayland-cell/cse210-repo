@@ -77,7 +77,7 @@ public class UserInterface
 
     public static int GetUserInputInBounds(int startBound, int endBound)
     {
-        string userInputString;
+        string ? userInputString;
         int userInputInt;
         while (true)
         {
@@ -99,12 +99,11 @@ public class UserInterface
 
     public static int GetUserInputUnbounded()
     {
-        string userInputString;
+        string ? userInputString;
         int userInputInt;
         while (true)
         {
             userInputString = Console.ReadLine();
-
 
             if (Int32.TryParse(userInputString, out userInputInt))
             {
