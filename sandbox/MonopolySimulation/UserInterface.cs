@@ -119,4 +119,18 @@ public class UserInterface
             
         }
     }
+
+    /* Gets a yes or a no from a user
+    Return:
+        true if yes
+        false if no
+     */
+    public static bool GetYesNo()
+    {
+        Console.WriteLine("1. Yes");
+        Console.WriteLine("2. No");
+        int userInput = GetUserInputInBounds(1, 2);
+
+        return userInput == 1;
+    }
 }
