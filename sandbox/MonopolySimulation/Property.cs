@@ -28,8 +28,17 @@ public abstract class Property : Space
         return type;
     }
 
+    /* Runs through landing on a property.
+    If they player landing owns it, do nothing
+    If the property is owned and the landing player does not own it, make them pay rent
+    If it is unowned, ask if they will buy it
+     */
     public override void LandOnSpace(Player currentPlayer)
     {
+        if (owner == currentPlayer)
+        {
+            return;
+        }
         if (owner is not null)
         {
             PayRent(currentPlayer);

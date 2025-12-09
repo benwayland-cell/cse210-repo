@@ -18,7 +18,8 @@ public class StandardProperty : Property
 
     protected override void PayRent(Player payingPlayer)
     {
-        Console.WriteLine($"{payingPlayer.GetName()} pay {GetPrice()}, not implemented");
+        int rentToPay = rent[numOfHouses];
+        payingPlayer.UpdateMoney(-rentToPay);
     }
 
     public override void Display()

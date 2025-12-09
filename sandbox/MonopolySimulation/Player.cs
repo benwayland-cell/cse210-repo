@@ -116,6 +116,7 @@ public class Player
     private const int TRADE_WITH_OTHERS = 3;
     private const int VIEW_PLAYERS = 4;
     private const int VIEW_BOARD = 5;
+    private const int DEBUG = 6;
 
     private string[] playerMenu =
     {
@@ -143,7 +144,7 @@ public class Player
                 Console.WriteLine(line);
             }
 
-            int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, VIEW_BOARD);
+            int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, DEBUG);
 
             switch (userInput)
             {
@@ -166,6 +167,10 @@ public class Player
 
                 case VIEW_BOARD:
                     UserInterface.DisplayBoard();
+                    break;
+                
+                case DEBUG:
+                    Console.WriteLine("Run debug");
                     break;
 
             }

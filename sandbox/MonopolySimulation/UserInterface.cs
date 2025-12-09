@@ -27,6 +27,11 @@ public class UserInterface
         // communityChestDeck = Card.GetCommunityChestDeck();
         board = Space.GetBoard();
 
+
+        // debug code
+        board[4].LandOnSpace(playerList[0]);
+        board[4].LandOnSpace(playerList[1]);
+
         // loop initialization
 
         int currentPlayerIndex = 0;
