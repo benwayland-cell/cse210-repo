@@ -20,7 +20,7 @@ public class StandardProperty : Property
 
     protected override void PayRent(Player payingPlayer)
     {
-        Console.WriteLine($"{payingPlayer.GetName()} pay {GetPrice()}");
+        Console.WriteLine($"{payingPlayer.GetName()} pay {GetPrice()}, not implemented");
     }
 
     public override void Display()

@@ -13,6 +13,11 @@ public class UserInterface
         return board.Count();
     }
 
+    public static List<Player> GetPlayerList()
+    {
+        return playerList;
+    }
+
     /* The function that runs the game */
     static public void MainLoop(List<Player> _playerList)
     {

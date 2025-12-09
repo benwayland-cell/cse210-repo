@@ -28,17 +28,37 @@ public abstract class Property : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine($"Landed on {GetName()}, not implemented");
+        if (owner is not null)
+        {
+            PayRent(currentPlayer);
+            return;
+        }
+        
+        Console.WriteLine($"Landed on {GetName()}");
+
+        if (currentPlayer.GetMoney() <= price)
+        {
+            Console.WriteLine("You cannot afford this property.");
+        }
+        else
+        {
+            Console.WriteLine("Will you buy this property");
+            if (UserInterface.GetYesNo())
+            {
+                Purchase(currentPlayer);
+            }
+        }
+        RunAuction(UserInterface.GetPlayerList());
     }
 
     private void Purchase(Player purchasingPlayer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Purchased by {purchasingPlayer.GetName()}, not implemented");
     }
 
-    private void RunAuction(Player[] playerList)
+    private void RunAuction(List<Player> playerList)
     {
-        throw new NotImplementedException();
+        Console.WriteLine($"Run auction on {GetName()}, not implemented");
     }
 
     protected abstract void PayRent(Player payingPlayer);
