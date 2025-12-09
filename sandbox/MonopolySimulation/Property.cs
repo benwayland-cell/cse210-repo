@@ -3,12 +3,14 @@ public abstract class Property : Space
 {
     private int price;
     private Player ? owner;
-    private int numOfSameTypeOwned = 0;
+    private string type;
+    public int numOfSameTypeOwned = 0;
 
-    public Property(string _name, int _price) : base(_name)
+    public Property(string _name, int _price, string _type) : base(_name)
     {
         price = _price;
         owner = null;
+        type = _type;
     }
 
     public int GetPrice()
@@ -21,9 +23,9 @@ public abstract class Property : Space
         return owner;
     }
 
-    public int GetNumOfSameTypeOwned()
+    public string GetTypeOfProperty()
     {
-        return numOfSameTypeOwned;
+        return type;
     }
 
     public override void LandOnSpace(Player currentPlayer)
@@ -53,7 +55,10 @@ public abstract class Property : Space
 
     private void Purchase(Player purchasingPlayer)
     {
-        Console.WriteLine($"Purchased by {purchasingPlayer.GetName()}, not implemented");
+        // Take the money from the player
+        purchasingPlayer.UpdateMoney(-price);
+        // Give them the property
+        purchasingPlayer.AddProperty(this);
     }
 
     private void RunAuction(List<Player> playerList)

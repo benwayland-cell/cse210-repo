@@ -30,8 +30,6 @@ public class Player
     public void UpdateMoney(int amountToChange)
     {
         money += amountToChange;
-
-        // need to implement going below 0
     }
 
     public void GetJailCard()
@@ -42,6 +40,19 @@ public class Player
     public void AddProperty(Property propertyToAdd)
     {
         ownedProperties.Add(propertyToAdd);
+
+
+        // increment the amount of the same type owned
+        propertyToAdd.numOfSameTypeOwned = 1;
+
+        // check to see if there are other properties of the same type and update their numOfSameTypeOwned
+        foreach(Property currentProperty in ownedProperties)
+        {
+            if (currentProperty.GetTypeOfProperty() == propertyToAdd.GetTypeOfProperty())
+            {
+                currentProperty.numOfSameTypeOwned = ++propertyToAdd.numOfSameTypeOwned;
+            }
+        }
     }
 
     public void RemoveProperty()

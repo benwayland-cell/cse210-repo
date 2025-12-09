@@ -3,16 +3,14 @@ using System.Drawing;
 
 public class StandardProperty : Property
 {
-    private string color;
     private int numOfHouses = 0;
     private int propertiesNeededForMonopoly;
 
     private int pricePerHouse;
     private int[] rent;
 
-    public StandardProperty(string _name, int _price, string _color, int _propertiesNeededForMonopoly, int _pricePerHouse, int[] _rent) : base(_name, _price)
+    public StandardProperty(string _name, int _price, string _type, int _propertiesNeededForMonopoly, int _pricePerHouse, int[] _rent) : base(_name, _price, _type)
     {
-        color = _color;
         propertiesNeededForMonopoly = _propertiesNeededForMonopoly;
         pricePerHouse = _pricePerHouse;
         rent = _rent;
@@ -26,8 +24,8 @@ public class StandardProperty : Property
     public override void Display()
     {
         Console.WriteLine(
-            $"Name: {GetName()}  \tPrice: {GetPrice()}  \tColor: {color} " + 
-            $"\tOwner: {GetOwner()}  \tNumOfHouses: {numOfHouses}  \tNumOfSameTypeOwned: {GetNumOfSameTypeOwned()}");
+            $"Name: {GetName()}  \tPrice: {GetPrice()}  \tColor: {GetTypeOfProperty()} " + 
+            $"\tOwner: {GetOwner()}  \tNumOfHouses: {numOfHouses}  \tNumOfSameTypeOwned: {numOfSameTypeOwned}");
     }
 
 }
