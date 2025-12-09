@@ -7,10 +7,15 @@ public class StandardProperty : Property
     private int numOfHouses = 0;
     private int propertiesNeededForMonopoly;
 
-    public StandardProperty(string _name, int _price, string _color, int _propertiesNeededForMonopoly) : base(_name, _price)
+    private int pricePerHouse;
+    private int[] rent;
+
+    public StandardProperty(string _name, int _price, string _color, int _propertiesNeededForMonopoly, int _pricePerHouse, int[] _rent) : base(_name, _price)
     {
         color = _color;
         propertiesNeededForMonopoly = _propertiesNeededForMonopoly;
+        pricePerHouse = _pricePerHouse;
+        rent = _rent;
     }
 
     protected override void PayRent(Player payingPlayer)
@@ -21,7 +26,7 @@ public class StandardProperty : Property
     public override void Display()
     {
         Console.WriteLine(
-            $"Name: {GetName()}  \tPrice: {GetPrice()}  \tColor: {color}  \tPropsNeededForMonop: {propertiesNeededForMonopoly}" + 
+            $"Name: {GetName()}  \tPrice: {GetPrice()}  \tColor: {color} " + 
             $"\tOwner: {GetOwner()}  \tNumOfHouses: {numOfHouses}  \tNumOfSameTypeOwned: {GetNumOfSameTypeOwned()}");
     }
 
