@@ -1,7 +1,7 @@
 
 public class RailRoad : Property
 {
-    public RailRoad(string _name, int _price) : base(_name, _price)
+    public RailRoad(string _name, int _price) : base(_name, _price, "Railroad")
     {
         
     }

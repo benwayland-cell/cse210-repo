@@ -59,6 +59,8 @@ public abstract class Property : Space
         purchasingPlayer.UpdateMoney(-price);
         // Give them the property
         purchasingPlayer.AddProperty(this);
+        // set the owner
+        owner = purchasingPlayer;
     }
 
     private void RunAuction(List<Player> playerList)

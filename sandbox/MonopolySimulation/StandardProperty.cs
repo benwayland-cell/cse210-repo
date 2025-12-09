@@ -28,4 +28,15 @@ public class StandardProperty : Property
             $"\tOwner: {GetOwner()}  \tNumOfHouses: {numOfHouses}  \tNumOfSameTypeOwned: {numOfSameTypeOwned}");
     }
 
+    private string DisplayWithSpacing(string givenString, int spacingAmount)
+    {
+        string spaceString = "";
+
+        for (int i = 0; i < spacingAmount - givenString.Count(); i++)
+        {
+            spaceString += " ";
+        }
+
+        return givenString + spaceString;
+    }
 }

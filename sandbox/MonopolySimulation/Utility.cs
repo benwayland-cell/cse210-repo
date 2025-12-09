@@ -1,7 +1,7 @@
 
 public class Utility : Property
 {
-    public Utility(string _name, int _price) : base(_name, _price)
+    public Utility(string _name, int _price) : base(_name, _price, "Utility")
     {
         
     }
