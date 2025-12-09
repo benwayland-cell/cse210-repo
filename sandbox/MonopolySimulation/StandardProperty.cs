@@ -24,12 +24,17 @@ public class StandardProperty : Property
     public override void Display()
     {
         Console.WriteLine(
-            $"Name: {GetName()}  \tPrice: {GetPrice()}  \tColor: {GetTypeOfProperty()} " + 
-            $"\tOwner: {GetOwner()}  \tNumOfHouses: {numOfHouses}  \tNumOfSameTypeOwned: {numOfSameTypeOwned}");
+            $"Name: {DisplayWithSpacing(GetName(), 20)}  Price: {DisplayWithSpacing(GetPrice().ToString(), 4)}  Color: {DisplayWithSpacing(GetTypeOfProperty(), 10)} " + 
+            $"Owner: {GetOwner()}\t  NumOfHouses: {DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}");
     }
 
     private string DisplayWithSpacing(string givenString, int spacingAmount)
     {
+        if (givenString is null)
+        {
+            givenString = "";
+        }
+        
         string spaceString = "";
 
         for (int i = 0; i < spacingAmount - givenString.Count(); i++)
