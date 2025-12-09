@@ -29,8 +29,8 @@ public class UserInterface
 
 
         // debug code
-        board[4].LandOnSpace(playerList[0]);
-        board[4].LandOnSpace(playerList[1]);
+        // board[4].LandOnSpace(playerList[0]);
+        // board[4].LandOnSpace(playerList[1]);
 
         // loop initialization
 
