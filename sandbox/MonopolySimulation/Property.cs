@@ -48,6 +48,7 @@ public abstract class Property : Space
             if (UserInterface.GetYesNo())
             {
                 Purchase(currentPlayer);
+                return;
             }
         }
         RunAuction(UserInterface.GetPlayerList());

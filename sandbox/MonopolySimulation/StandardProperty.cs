@@ -23,9 +23,16 @@ public class StandardProperty : Property
 
     public override void Display()
     {
+        Player ? ownerToDisplay = GetOwner();
+        string ownerName = "";
+        if (ownerToDisplay is not null)
+        {
+            ownerName = ownerToDisplay.GetName();
+        }
+        
         Console.WriteLine(
-            $"Name: {DisplayWithSpacing(GetName(), 20)}  Price: {DisplayWithSpacing(GetPrice().ToString(), 4)}  Color: {DisplayWithSpacing(GetTypeOfProperty(), 10)} " + 
-            $"Owner: {GetOwner()}\t  NumOfHouses: {DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}");
+            $"Name: {DisplayWithSpacing(GetName(), 20)}  Price: {DisplayWithSpacing(GetPrice().ToString(), 4)}  Color: {DisplayWithSpacing(GetTypeOfProperty(), 15)} " + 
+            $"Owner: {DisplayWithSpacing(ownerName, 20)}\t  NumOfHouses: {DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}");
     }
 
     private string DisplayWithSpacing(string givenString, int spacingAmount)
