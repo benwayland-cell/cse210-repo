@@ -131,7 +131,7 @@ public class Player
             {
                 Console.WriteLine(line);
             }
-            
+
             int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, VIEW_BOARD);
 
             switch (userInput)
@@ -142,11 +142,11 @@ public class Player
                     break;
 
                 case BUY_HOUSES:
-                    Console.WriteLine("Buy houses, not implemented.");
+                    BuyHouses();
                     break;
 
                 case TRADE_WITH_OTHERS:
-                    Console.WriteLine("Trade with others, not implemented.");
+                    TradeWithOthers();
                     break;
                 
                 case VIEW_PLAYERS:
@@ -207,4 +207,13 @@ public class Player
         return die1 == die2;
     }
 
+    private void BuyHouses()
+    {
+        Console.WriteLine("Buy houses, not implemented.");
+    }
+
+    private void TradeWithOthers()
+    {
+        Console.WriteLine("Trade with others, not implemented.");
+    }
 }
