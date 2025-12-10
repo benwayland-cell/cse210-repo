@@ -1,6 +1,4 @@
 
-using System.Runtime.CompilerServices;
-
 public enum CardType {GoToLocation, UpdateMoney, GoToRelative, GoToJail, GoToRailroad, GoToUtility, GetFromAllPlayers, GeneralRepairs, StreetRepairs, GetOutOfJailFree}
 
 public class Card

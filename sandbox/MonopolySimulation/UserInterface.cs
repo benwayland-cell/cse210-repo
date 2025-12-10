@@ -1,6 +1,4 @@
 
-using System.Reflection.Metadata;
-
 public class UserInterface
 {
     private static Space[] board;
