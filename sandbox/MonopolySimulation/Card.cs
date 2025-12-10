@@ -1,4 +1,6 @@
 
+using System.Runtime.CompilerServices;
+
 public enum CardType {GoToLocation, UpdateMoney, GoToRelative, GoToJail, GoToRailroad, GoToUtility, GetFromAllPlayers, GeneralRepairs, StreetRepairs, GetOutOfJailFree}
 
 public class Card
@@ -134,9 +136,9 @@ public class Card
         }
     }
 
-    public static List<Card> GetChanceDeck()
+    public static Stack<Card> GetChanceDeck()
     {
-        List<Card> chanceDeck = new List<Card>
+        List<Card> unRandomizedChanceDeck = new List<Card>
         {
             new Card("Advance to Boardwalk.", CardType.GoToLocation, Space.BOARDWALK_LOCATION),
             new Card("Advance to Go (Collect $200).", CardType.GoToLocation, Space.GO_LOCATION),
@@ -156,12 +158,24 @@ public class Card
             new Card("Your building loan matures. Collect $150", CardType.UpdateMoney, 150)
             
         };
+
+        Stack<Card> chanceDeck = new Stack<Card>();
+
+        Random random = new Random();
+
+        while (unRandomizedChanceDeck.Count > 0)
+        {
+            Card cardToAdd = unRandomizedChanceDeck[random.Next(0, unRandomizedChanceDeck.Count)];
+            chanceDeck.Push(cardToAdd);
+            unRandomizedChanceDeck.Remove(cardToAdd);
+        }
+
         return chanceDeck;
     }
 
-    public static List<Card> GetCommunityChestDeck()
+    public static Stack<Card> GetCommunityChestDeck()
     {
-        List<Card> communityChestDeck = new List<Card>
+        List<Card> unrandomizedCommunityChestDeck = new List<Card>
         {
             new Card("Advance to Go (Collect $200)", CardType.GoToLocation, Space.GO_LOCATION),
             new Card("Bank error in your favor. Collect $200", CardType.UpdateMoney, 200),
@@ -178,8 +192,20 @@ public class Card
             new Card("Receive $25 consultancy fee", CardType.UpdateMoney, 25),
             new Card("You are assessed for street repair. $40 per house. $115 per hotel", CardType.StreetRepairs, 0),
             new Card("You have won second prize in a beauty contest. Collect $10", CardType.UpdateMoney, 10),
-            new Card("You inherit $100", CardType.UpdateMoney, 100)
+            new Card("You inherit $100", CardType.UpdateMoney, 0)
         };
+
+        Stack<Card> communityChestDeck = new Stack<Card>();
+
+        Random random = new Random();
+
+        while (unrandomizedCommunityChestDeck.Count > 0)
+        {
+            Card cardToAdd = unrandomizedCommunityChestDeck[random.Next(0, unrandomizedCommunityChestDeck.Count)];
+            communityChestDeck.Push(cardToAdd);
+            unrandomizedCommunityChestDeck.Remove(cardToAdd);
+        }
+
         return communityChestDeck;
     }
 }
