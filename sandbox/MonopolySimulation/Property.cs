@@ -5,6 +5,7 @@ public abstract class Property : Space
     private Player ? owner;
     private string type;
     public int numOfSameTypeOwned = 0;
+    private bool mortgaged = false;
 
     public Property(string _name, int _price, string _type) : base(_name)
     {
@@ -35,7 +36,7 @@ public abstract class Property : Space
      */
     public override void LandOnSpace(Player currentPlayer)
     {
-        if (owner == currentPlayer)
+        if (owner == currentPlayer || mortgaged)
         {
             return;
         }
@@ -80,6 +81,14 @@ public abstract class Property : Space
 
     protected abstract void PayRent(Player payingPlayer);
     public abstract bool OwnerHasMonopoly();
-    public abstract void PurchaseHouse();
-    public abstract int GetNetWorth();
+
+    public virtual void PurchaseHouse()
+    {
+        Console.WriteLine($"Shouldn't purchase a house here: {GetName()}");
+    }
+
+    public virtual int GetNetWorth()
+    {
+        return GetPrice();
+    }
 }
