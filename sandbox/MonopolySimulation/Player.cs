@@ -210,15 +210,28 @@ public class Player
         int dieTotal;
         int timesDoubleHaveBeenRolled = 0;
 
+        // if the player is in jail, ask them if they want to pay to get out or use a card
         if (turnsLeftInJail > 0)
         {
             Console.WriteLine("Do you want to pay $50 to get out of jail?");
-            if (!UserInterface.GetYesNo())
+            if (UserInterface.GetYesNo())
             {
-                RunPlayerInJail();
-                return;
+                UpdateMoney(-50);
             }
-            UpdateMoney(-50);
+            
+            else if (numOfGetOutOfJailCards > 0)
+            {
+                Console.WriteLine("Do you want to use your Get out of Jail Free card?");
+                if (!UserInterface.GetYesNo())
+                {
+                    RunPlayerInJail();
+                    return;
+                }
+
+                numOfGetOutOfJailCards--;
+            }
+
+            
         }
         
         do
