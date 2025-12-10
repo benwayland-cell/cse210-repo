@@ -8,11 +8,11 @@ public class CommunityChest : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Landed on Community chest, not implemented");
     }
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Community Chest");
     }
 }

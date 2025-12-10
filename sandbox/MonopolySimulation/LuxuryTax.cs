@@ -8,11 +8,11 @@ public class LuxuryTax : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Land on Luxury Tax, not implemented");
     }
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Luxury Tax");
     }
 }

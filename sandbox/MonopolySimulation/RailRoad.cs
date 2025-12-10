@@ -8,12 +8,12 @@ public class RailRoad : Property
 
     protected override void PayRent(Player payingPlayer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Pay rent on railroad, not implemented");
     }
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine(GetName());
     }
 
     public override bool OwnerHasMonopoly()

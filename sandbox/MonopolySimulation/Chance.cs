@@ -8,11 +8,11 @@ public class Chance : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Land on chance, not implemented");
     }
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Chance");
     }
 }

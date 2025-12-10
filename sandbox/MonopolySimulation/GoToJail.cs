@@ -13,6 +13,6 @@ public class GoToJail : Space
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Go to Jail");
     }
 }
