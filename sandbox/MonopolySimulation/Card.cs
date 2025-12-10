@@ -1,5 +1,5 @@
 
-public enum CardType {GoToLocation, UpdateMoney, GoToRelative, GoToJail, GoToRailroad, GetFromAllPlayers, GeneralRepairs, StreetRepairs}
+public enum CardType {GoToLocation, UpdateMoney, GoToRelative, GoToJail, GoToRailroad, GoToUtility, GetFromAllPlayers, GeneralRepairs, StreetRepairs}
 
 public class Card
 {
@@ -43,7 +43,11 @@ public class Card
                 break;
             
             case CardType.GoToRailroad:
-                GoToRailroad(player);
+                GoToNearest(player, Space.RAILROAD_LOCATIONS);
+                break;
+
+            case CardType.GoToUtility:
+                GoToNearest(player, Space.UTILITY_LOCATIONS);
                 break;
             
             case CardType.GetFromAllPlayers:
@@ -53,25 +57,15 @@ public class Card
         }
     }
 
-    public static List<Card> GetChanceDeck()
-    {
-        throw new NotImplementedException();
-    }
-
-    public static List<Card> GetCommunityChestDeck()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void GoToRailroad(Player player)
+    private void GoToNearest(Player player, int[] locations)
     {
         // find the nearest railroad
-        int locationToGoTo = Space.RAILROAD_LOCATIONS[0];
-        foreach (int railroadLocation in Space.RAILROAD_LOCATIONS)
+        int locationToGoTo = locations[0];
+        foreach (int currentLocation in locations)
         {
-            if (player.GetLocation() < railroadLocation)
+            if (player.GetLocation() < currentLocation)
             {
-                locationToGoTo = railroadLocation;
+                locationToGoTo = currentLocation;
                 break;
             }
         }
@@ -79,17 +73,17 @@ public class Card
         // go to the location
         player.MoveToAbsolute(locationToGoTo);
         
-        Property railroad = (Property)UserInterface.GetBoard()[locationToGoTo];
-        Player ? railroadOwner = railroad.GetOwner();
+        Property spaceToGoTo = (Property)UserInterface.GetBoard()[locationToGoTo];
+        Player ? spaceToGoToOwner = spaceToGoTo.GetOwner();
 
         // if the railroad is owned by someone else
-        if (railroadOwner is not null && railroadOwner != player)
+        if (spaceToGoToOwner is not null && spaceToGoToOwner != player)
         {
             // we have to pay double rent, so just land on it one more time
-            railroad.LandOnSpace(player);
+            spaceToGoTo.LandOnSpace(player);
         }
 
-        railroad.LandOnSpace(player);
+        spaceToGoTo.LandOnSpace(player);
     }
 
     private void GetFromAllPlayers(Player player, int amount)
@@ -102,5 +96,15 @@ public class Card
         }
 
         player.UpdateMoney(amount * playerList.Count);
+    }
+
+    public static List<Card> GetChanceDeck()
+    {
+        throw new NotImplementedException();
+    }
+
+    public static List<Card> GetCommunityChestDeck()
+    {
+        throw new NotImplementedException();
     }
 }

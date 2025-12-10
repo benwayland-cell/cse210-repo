@@ -18,8 +18,15 @@ public abstract class Space
     public abstract void LandOnSpace(Player currentPlayer);
     public abstract void Display();
 
-    public const int JAIL_LOCATION = 10;
+    // locations needed for cards
     public static int[] RAILROAD_LOCATIONS = [5, 15, 25, 35];
+    public static int[] UTILITY_LOCATIONS = [12, 28];
+    public const int GO_LOCATION = 0;
+    public const int READING_RAILROAD_LOCATION = 5;
+    public const int JAIL_LOCATION = 10;
+    public const int ST_CHARLES_PLACE_LOCATION = 11;
+    public const int ILLINOIS_AVE_LOCATION = 24;
+    public const int BOARDWALK_LOCATION = 39;
 
     /* Returns an array of the default board */
     static public Space[] GetBoard()
