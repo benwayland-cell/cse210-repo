@@ -8,7 +8,7 @@ public class CommunityChest : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine("Landed on Community chest, not implemented");
+        UserInterface.DrawCommunityChestCard(currentPlayer);
     }
 
     public override void Display()

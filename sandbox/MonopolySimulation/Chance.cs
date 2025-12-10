@@ -8,7 +8,7 @@ public class Chance : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine("Land on chance, not implemented");
+        UserInterface.DrawChanceCard(currentPlayer);
     }
 
     public override void Display()

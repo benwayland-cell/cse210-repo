@@ -115,6 +115,10 @@ public class Player
             location -= sizeOfBoard;
             PassGo();
         }
+        else if (location < 0)
+        {
+            location += sizeOfBoard;
+        }
     }
 
     private void PassGo()
@@ -193,8 +197,7 @@ public class Player
                 
                 case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
-                    money = 100;
-                    UpdateMoney(-200);
+                    UserInterface.DrawChanceCard(this);
                     break;
 
             }

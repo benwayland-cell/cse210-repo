@@ -5,8 +5,8 @@ public class UserInterface
 {
     private static Space[] board;
     private static List<Player> playerList;
-    private static List<Card> chanceDeck;
-    private static List<Card> communityChestDeck;
+    private static Stack<Card> chanceDeck;
+    private static Stack<Card> communityChestDeck;
 
     static public int GetSizeOfBoard()
     {
@@ -28,10 +28,9 @@ public class UserInterface
     {
         // init data
         playerList = _playerList;
-        // chanceDeck = Card.GetChanceDeck();
-        // communityChestDeck = Card.GetCommunityChestDeck();
+        chanceDeck = Card.GetChanceDeck();
+        communityChestDeck = Card.GetCommunityChestDeck();
         board = Space.GetBoard();
-
 
         // debug code
 
@@ -78,15 +77,25 @@ public class UserInterface
     }
     
     /* Draws and runs a chance card from the chanceDeck */
-    public static void DrawChanceCard()
+    public static void DrawChanceCard(Player player)
     {
-        throw new NotImplementedException();
+        chanceDeck.Pop().PlayCard(player);
+
+        if (chanceDeck.Count == 0)
+        {
+            chanceDeck = Card.GetChanceDeck();
+        }
     }
 
     /* Draws and runs a community chest card from the community chest deck */
-    public static void DrawCommunityChestCard()
+    public static void DrawCommunityChestCard(Player player)
     {
-        throw new NotImplementedException();
+        communityChestDeck.Pop().PlayCard(player);
+
+        if (communityChestDeck.Count == 0)
+        {
+            communityChestDeck = Card.GetCommunityChestDeck();
+        }
     }
 
     /* Makes the given player land on the given space
