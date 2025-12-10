@@ -15,4 +15,9 @@ public class Utility : Property
     {
         throw new NotImplementedException();
     }
+
+    public override bool OwnerHasMonopoly()
+    {
+        return false;
+    }
 }

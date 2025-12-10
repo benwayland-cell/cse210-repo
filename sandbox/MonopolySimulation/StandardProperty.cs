@@ -52,4 +52,28 @@ public class StandardProperty : Property
 
         return givenString + spaceString;
     }
+
+    public override bool OwnerHasMonopoly()
+    {
+        Player ? currentOwner = GetOwner();
+        if (currentOwner is null)
+        {
+            return false;
+        }
+
+        int totalOfSameType = 1;
+        foreach (Property currentProperty in currentOwner.GetOwnedProperties())
+        {
+            if (currentProperty.GetTypeOfProperty() == GetTypeOfProperty())
+            {
+                totalOfSameType++;
+                if (totalOfSameType == propertiesNeededForMonopoly)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

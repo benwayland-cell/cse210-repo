@@ -36,6 +36,11 @@ public class Player
     {
         numOfGetOutOfJailCards ++;
     }
+
+    public List<Property> GetOwnedProperties()
+    {
+        return ownedProperties;
+    }
     
     public void AddProperty(Property propertyToAdd)
     {
