@@ -53,9 +53,10 @@ public class Player
         // check to see if there are other properties of the same type and update their numOfSameTypeOwned
         foreach(Property currentProperty in ownedProperties)
         {
-            if (currentProperty.GetTypeOfProperty() == propertyToAdd.GetTypeOfProperty())
+            if (currentProperty.GetTypeOfProperty() == propertyToAdd.GetTypeOfProperty() && currentProperty != propertyToAdd)
             {
-                currentProperty.numOfSameTypeOwned = ++propertyToAdd.numOfSameTypeOwned;
+                propertyToAdd.numOfSameTypeOwned++;
+                currentProperty.numOfSameTypeOwned = propertyToAdd.numOfSameTypeOwned;
             }
         }
     }
