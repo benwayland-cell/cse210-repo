@@ -35,7 +35,8 @@ public class UserInterface
 
         // debug code
 
-        board[9].LandOnSpace(playerList[0]);
+        // board[9].LandOnSpace(playerList[0]);
+        // ((Property)board[9]).Mortgage();
 
 
         // loop initialization
@@ -53,6 +54,8 @@ public class UserInterface
 
             Console.ReadLine();
         }
+
+        Console.WriteLine($"\n{playerList[0].GetName()} won!");
     }
 
     /* Displays the board in its current state */

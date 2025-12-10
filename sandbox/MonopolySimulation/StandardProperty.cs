@@ -43,7 +43,7 @@ public class StandardProperty : Property
         
         Console.WriteLine(
             $"Name: {DisplayWithSpacing(GetName(), 20)}  Price: {DisplayWithSpacing(GetPrice().ToString(), 4)}  Color: {DisplayWithSpacing(GetTypeOfProperty(), 15)} " + 
-            $"Owner: {DisplayWithSpacing(ownerName, 20)}\t  NumOfHouses: {DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}");
+            $"Owner: {DisplayWithSpacing(ownerName, 20)}\t  NumOfHouses: {DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}  M: {IsMortgaged().ToString()[0]}");
     }
 
     private string DisplayWithSpacing(string givenString, int spacingAmount)

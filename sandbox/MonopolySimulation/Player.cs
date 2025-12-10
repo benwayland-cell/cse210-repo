@@ -128,21 +128,17 @@ public class Player
         Console.WriteLine($"Name: {name}  \tLocation: {location}  \tMoney: {money}  \tTurnsLeftInJail: {turnsLeftInJail}");
     }
 
-    private const int ROLL_DICE = 1;
-    private const int BUY_HOUSES = 2;
-    private const int TRADE_WITH_OTHERS = 3;
-    private const int VIEW_PLAYERS = 4;
-    private const int VIEW_BOARD = 5;
-    private const int DEBUG = 6;
+    private enum PlayerMenu {RollDice, BuyHouses, TradeWithOthers,Unmortgage, ViewPLayers, ViewBoard, Debug}
 
     private string[] playerMenu =
     {
         "What do you want to do?",
-        $"{ROLL_DICE}. Roll dice",
-        $"{BUY_HOUSES}. Buy houses",
-        $"{TRADE_WITH_OTHERS}. Trade with others",
-        $"{VIEW_PLAYERS}. View Players",
-        $"{VIEW_BOARD}. View Board"
+        $"{(int)PlayerMenu.RollDice}. Roll dice",
+        $"{(int)PlayerMenu.BuyHouses}. Buy houses",
+        $"{(int)PlayerMenu.TradeWithOthers}. Trade with others",
+        $"{(int)PlayerMenu.Unmortgage}. Unmortgage properties",
+        $"{(int)PlayerMenu.ViewPLayers}. View Players",
+        $"{(int)PlayerMenu.ViewBoard}. View Board"
     };
 
     public void RunTurn()
@@ -161,32 +157,36 @@ public class Player
                 Console.WriteLine(line);
             }
 
-            int userInput = UserInterface.GetUserInputInBounds(ROLL_DICE, DEBUG);
+            int userInput = UserInterface.GetUserInputInBounds(0, (int)PlayerMenu.Debug);
 
             switch (userInput)
             {
-                case ROLL_DICE:
+                case (int)PlayerMenu.RollDice:
                     RollDice();
                     done = true;
                     break;
 
-                case BUY_HOUSES:
+                case (int)PlayerMenu.BuyHouses:
                     BuyHouses();
                     break;
 
-                case TRADE_WITH_OTHERS:
+                case (int)PlayerMenu.TradeWithOthers:
                     TradeWithOthers();
                     break;
                 
-                case VIEW_PLAYERS:
+                case (int)PlayerMenu.Unmortgage:
+                    Unmortgage();
+                    break;
+
+                case (int)PlayerMenu.ViewPLayers:
                     UserInterface.DisplayPlayers();
                     break;
 
-                case VIEW_BOARD:
+                case (int)PlayerMenu.ViewBoard:
                     UserInterface.DisplayBoard();
                     break;
                 
-                case DEBUG:
+                case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
                     money = 100;
                     UpdateMoney(-200);
@@ -359,5 +359,29 @@ public class Player
     private void Bankrupt()
     {
         Console.WriteLine("Uh oh, you're still in debt");
+    }
+
+    private void Unmortgage()
+    {
+        // get a list of mortgaged properties
+        List<Property> mortgagedProperties = new List<Property>();
+
+        foreach (Property currentProperty in ownedProperties)
+        {
+            if (currentProperty.IsMortgaged())
+            {
+                mortgagedProperties.Add(currentProperty);
+            }
+        }
+
+        int index;
+        for (index = 0; index < mortgagedProperties.Count; index++)
+        {
+            Console.Write($"{index}. ");
+            mortgagedProperties[index].Display();
+        }
+
+        Console.WriteLine("Which property do you want to unmortgage?");
+        int userInput = UserInterface.GetUserInputInBounds(0, index - 1);
     }
 }
