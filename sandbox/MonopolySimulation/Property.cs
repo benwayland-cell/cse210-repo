@@ -101,4 +101,22 @@ public abstract class Property : Space
         
         return GetPrice();
     }
+
+    /* Mortgages this property and returns its mortgage price */
+    public virtual int Mortgage()
+    {
+        mortgaged = true;
+        return price / 2;
+    }
+
+    public void UnMortgage()
+    {
+        if (owner is null)
+        {
+            return;
+        }
+        
+        mortgaged = false;
+        owner.UpdateMoney(-(int)(price / 2 * 0.1));
+    }
 }

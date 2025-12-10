@@ -30,6 +30,11 @@ public class Player
     public void UpdateMoney(int amountToChange)
     {
         money += amountToChange;
+
+        if (money < 0)
+        {
+            InDebt();
+        }
     }
 
     public void GetJailCard()
@@ -183,7 +188,8 @@ public class Player
                 
                 case DEBUG:
                     Console.WriteLine("Run debug");
-                    Console.WriteLine($"Net worth: {GetNetWorth()}");
+                    money = 100;
+                    UpdateMoney(-200);
                     break;
 
             }
@@ -310,5 +316,48 @@ public class Player
         }
 
         return netWorth;
+    }
+
+    /* Get the player out of debt by mortaging houses */
+    private void InDebt()
+    {
+        // get a list of all unmortgaged properties
+        List<Property> unmortgagedProperties = new List<Property>();
+
+        foreach (Property currentProperty in ownedProperties)
+        {
+            if (!currentProperty.IsMortgaged())
+            {
+                unmortgagedProperties.Add(currentProperty);
+            }
+        }
+
+        Console.WriteLine($"Num of unmortgaged: {unmortgagedProperties.Count}");
+
+        while (money < 0 && unmortgagedProperties.Count > 0)
+        {
+            // display the properties
+            for (int index = 0; index < unmortgagedProperties.Count; index++)
+            {
+                Console.WriteLine($"{index}. ");
+                unmortgagedProperties[index].Display();
+            }
+
+            Console.WriteLine("Which property to mortgage?");
+            int userInput = UserInterface.GetUserInputInBounds(0, unmortgagedProperties.Count);
+
+            money += unmortgagedProperties[userInput].Mortgage();
+            unmortgagedProperties.Remove(unmortgagedProperties[userInput]);
+        }
+
+        if (money < 0)
+        {
+            Bankrupt();
+        }
+    }
+
+    private void Bankrupt()
+    {
+        Console.WriteLine("Uh oh, you're still in debt");
     }
 }

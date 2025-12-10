@@ -110,4 +110,13 @@ public class StandardProperty : Property
         
         return GetPrice() + pricePerHouse * numOfHouses;
     }
+
+    public override int Mortgage()
+    {
+        int mortgagePrice = base.Mortgage() + (pricePerHouse * numOfHouses) / 2;
+
+        numOfHouses = 0;
+
+        return mortgagePrice;
+    }
 }
