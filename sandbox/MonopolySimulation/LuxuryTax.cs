@@ -8,7 +8,7 @@ public class LuxuryTax : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine("Land on Luxury Tax, not implemented");
+        currentPlayer.UpdateMoney(-100);
     }
 
     public override void Display()

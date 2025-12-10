@@ -8,7 +8,7 @@ public class IncomeTax : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine("Landed on Income tax, not implemented");
+        currentPlayer.UpdateMoney(-200);
     }
 
     public override void Display()
