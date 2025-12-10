@@ -25,4 +25,9 @@ public class RailRoad : Property
     {
         throw new NotImplementedException();
     }
+
+    public override int GetNetWorth()
+    {
+        return GetPrice();
+    }
 }

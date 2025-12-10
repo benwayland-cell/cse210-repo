@@ -183,7 +183,7 @@ public class Player
                 
                 case DEBUG:
                     Console.WriteLine("Run debug");
-                    UserInterface.GetBoard()[1].LandOnSpace(this);
+                    Console.WriteLine($"Net worth: {GetNetWorth()}");
                     break;
 
             }
@@ -298,5 +298,17 @@ public class Player
     private void TradeWithOthers()
     {
         Console.WriteLine("Trade with others, not implemented.");
+    }
+
+    public int GetNetWorth()
+    {
+        int netWorth = money;
+
+        foreach (Property currentProperty in ownedProperties)
+        {
+            netWorth += currentProperty.GetNetWorth();
+        }
+
+        return netWorth;
     }
 }

@@ -81,4 +81,5 @@ public abstract class Property : Space
     protected abstract void PayRent(Player payingPlayer);
     public abstract bool OwnerHasMonopoly();
     public abstract void PurchaseHouse();
+    public abstract int GetNetWorth();
 }

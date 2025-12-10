@@ -100,4 +100,9 @@ public class StandardProperty : Property
             numOfHouses = 5;
         }
     }
+
+    public override int GetNetWorth()
+    {
+        return GetPrice() + pricePerHouse * numOfHouses;
+    }
 }
