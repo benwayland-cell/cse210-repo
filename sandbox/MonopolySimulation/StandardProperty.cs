@@ -89,6 +89,15 @@ public class StandardProperty : Property
 
     public override void PurchaseHouse()
     {
-        Console.WriteLine($"Buy house on {GetName()}, not implemented");
+        Player ? currentOwner = GetOwner();
+        if (currentOwner is null) {return;}
+        
+        currentOwner.UpdateMoney(-pricePerHouse);
+        numOfHouses++;
+
+        if (numOfHouses > 5)
+        {
+            numOfHouses = 5;
+        }
     }
 }

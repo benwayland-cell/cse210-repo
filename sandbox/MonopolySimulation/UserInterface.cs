@@ -13,6 +13,11 @@ public class UserInterface
         return board.Count();
     }
 
+    public static Space[] GetBoard()
+    {
+        return board;
+    }
+
     public static List<Player> GetPlayerList()
     {
         return playerList;

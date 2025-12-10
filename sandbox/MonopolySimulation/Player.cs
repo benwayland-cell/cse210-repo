@@ -177,6 +177,7 @@ public class Player
                 
                 case DEBUG:
                     Console.WriteLine("Run debug");
+                    UserInterface.GetBoard()[1].LandOnSpace(this);
                     break;
 
             }
