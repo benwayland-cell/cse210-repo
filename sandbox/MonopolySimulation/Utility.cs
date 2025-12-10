@@ -20,4 +20,9 @@ public class Utility : Property
     {
         return false;
     }
+
+    public override void PurchaseHouse()
+    {
+        throw new NotImplementedException();
+    }
 }

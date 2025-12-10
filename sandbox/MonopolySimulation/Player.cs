@@ -230,7 +230,37 @@ public class Player
 
     private void BuyHouses()
     {
-        Console.WriteLine("Buy houses, not implemented.");
+        // first get the properties with monopolies
+        List<Property> propertiesWithMonopolies = new List<Property>();
+
+        foreach(Property currentProperty in ownedProperties)
+        {
+            if (currentProperty.OwnerHasMonopoly())
+            {
+                propertiesWithMonopolies.Add(currentProperty);
+            }
+        }
+
+
+        // display the properties with monopolies
+        Console.WriteLine("Where do you want to build a house?");
+        int index;
+        for(index = 0; index < propertiesWithMonopolies.Count; index++)
+        {
+            Console.Write($"{index}. ");
+            propertiesWithMonopolies[index].Display();
+        }
+        Console.WriteLine($"{index}. Back");
+
+        int userInput = UserInterface.GetUserInputInBounds(0, index);
+
+        // if they wanted to go back
+        if (userInput == index)
+        {
+            return;
+        }
+
+        propertiesWithMonopolies[userInput].PurchaseHouse();
     }
 
     private void TradeWithOthers()

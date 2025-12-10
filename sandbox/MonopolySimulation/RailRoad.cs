@@ -20,4 +20,9 @@ public class RailRoad : Property
     {
         return false;
     }
+
+    public override void PurchaseHouse()
+    {
+        throw new NotImplementedException();
+    }
 }

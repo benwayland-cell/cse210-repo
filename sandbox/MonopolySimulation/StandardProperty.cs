@@ -9,6 +9,16 @@ public class StandardProperty : Property
     private int pricePerHouse;
     private int[] rent;
 
+    public int GetNumOfHouses()
+    {
+        return numOfHouses;
+    }
+
+    public int GetPricePerHouse()
+    {
+        return pricePerHouse;
+    }
+
     public StandardProperty(string _name, int _price, string _type, int _propertiesNeededForMonopoly, int _pricePerHouse, int[] _rent) : base(_name, _price, _type)
     {
         propertiesNeededForMonopoly = _propertiesNeededForMonopoly;
@@ -75,5 +85,10 @@ public class StandardProperty : Property
         }
 
         return false;
+    }
+
+    public override void PurchaseHouse()
+    {
+        Console.WriteLine($"Buy house on {GetName()}, not implemented");
     }
 }
