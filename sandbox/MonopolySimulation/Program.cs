@@ -39,8 +39,8 @@ class Program
         {
             new Player("Test name 1"),
             new Player("Test name 2"),
-            new Player("Test name 3"),
-            new Player("Test name 4")
+            // new Player("Test name 3"),
+            // new Player("Test name 4")
         };
 
         UserInterface.MainLoop(testPlayerArray);

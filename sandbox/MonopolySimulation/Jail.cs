@@ -8,7 +8,7 @@ public class Jail : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        Console.WriteLine("Landed on Jail, not implemented");
+        Console.WriteLine("Just visiting Jail");
     }
 
     public override void Display()

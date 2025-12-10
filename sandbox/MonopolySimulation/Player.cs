@@ -114,7 +114,8 @@ public class Player
 
     public void GoToJail()
     {
-        Console.WriteLine("Go to Jail, not implemented.");
+        location = Space.JAIL_LOCATION;
+        turnsLeftInJail = 3;
     }
 
     public void Display()
@@ -196,6 +197,17 @@ public class Player
         bool rolledDoubles;
         int dieTotal;
         int timesDoubleHaveBeenRolled = 0;
+
+        if (turnsLeftInJail > 0)
+        {
+            Console.WriteLine("Do you want to pay $50 to get out of jail?");
+            if (!UserInterface.GetYesNo())
+            {
+                RunPlayerInJail();
+                return;
+            }
+            UpdateMoney(-50);
+        }
         
         do
         {
@@ -233,6 +245,19 @@ public class Player
         int die2 = random.Next(1, 7);
         total = die1 + die2;
         return die1 == die2;
+    }
+
+    private void RunPlayerInJail()
+    {
+        int dieTotal;
+        if (!Roll2D6(out dieTotal))
+        {
+            turnsLeftInJail--;
+            return;
+        }
+
+        MoveToRelative(dieTotal);
+        UserInterface.LandOnGivenSpace(location, this);
     }
 
     private void BuyHouses()

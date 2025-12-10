@@ -18,6 +18,8 @@ public abstract class Space
     public abstract void LandOnSpace(Player currentPlayer);
     public abstract void Display();
 
+    public const int JAIL_LOCATION = 10;
+
     /* Returns an array of the default board */
     static public Space[] GetBoard()
     {
