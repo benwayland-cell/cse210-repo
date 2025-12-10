@@ -8,11 +8,11 @@ public class Jail : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Landed on Jail, not implemented");
     }
 
     public override void Display()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Jail");
     }
 }

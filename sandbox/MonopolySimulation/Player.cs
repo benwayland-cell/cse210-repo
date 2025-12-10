@@ -9,7 +9,7 @@ public class Player
     private int location = 0;
     private int money = 1500;
     private List<Property> ownedProperties = new List<Property>();
-    private int turnsInJail = 0;
+    private int turnsLeftInJail = 0;
     private int numOfGetOutOfJailCards = 0;
 
     public Player(string _name)
@@ -35,6 +35,11 @@ public class Player
     public void GetJailCard()
     {
         numOfGetOutOfJailCards ++;
+    }
+
+    public int GetTurnsLeftInJail()
+    {
+        return turnsLeftInJail;
     }
 
     public List<Property> GetOwnedProperties()
@@ -114,7 +119,7 @@ public class Player
 
     public void Display()
     {
-        Console.WriteLine($"Name: {name}  \tLocation: {location}  \tMoney: {money}");
+        Console.WriteLine($"Name: {name}  \tLocation: {location}  \tMoney: {money}  \tTurnsLeftInJail: {turnsLeftInJail}");
     }
 
     private const int ROLL_DICE = 1;

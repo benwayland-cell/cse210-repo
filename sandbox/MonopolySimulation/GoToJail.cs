@@ -8,7 +8,7 @@ public class GoToJail : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
-        throw new NotImplementedException();
+        currentPlayer.GoToJail();
     }
 
     public override void Display()
