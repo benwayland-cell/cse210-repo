@@ -51,6 +51,11 @@ public class Player
     {
         return ownedProperties;
     }
+
+    public int GetLocation()
+    {
+        return location;
+    }
     
     public void AddProperty(Property propertyToAdd)
     {

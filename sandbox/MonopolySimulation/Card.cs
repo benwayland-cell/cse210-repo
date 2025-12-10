@@ -1,42 +1,55 @@
 
-using System.Runtime.CompilerServices;
+public enum CardType {GoToLocation, UpdateMoney, GoToRelative, GoToJail, GoToRailroad, GetFromAllPlayers, GeneralRepairs, StreetRepairs}
 
 public class Card
 {
     // text displayed to the user
     string text;
     // the method it will run
-    int cardMethodKey;
+    CardType cardType;
     // other data that the card will use when run
     // e.g. 50 if the card says to pay 50
     int otherData;
 
-    // Constants used for determining what method we will use
-    private const int GO_TO_LOCATION = 0;
-    private const int RECIEVE_MONEY = 1;
-    private const int LOSE_MONEY = 2;
-
-
-    public Card(string _text, int _cardMethodKey, int _otherData) 
+    public Card(string _text, CardType _cardType, int _otherData) 
     {
         text = _text;
-        cardMethodKey = _cardMethodKey;
+        cardType = _cardType;
         otherData = _otherData;
     }
 
     public void PlayCard(Player player)
     {
-        switch (cardMethodKey)
+        Console.WriteLine(text);
+        
+        switch (cardType)
         {
-            case GO_TO_LOCATION:
-                Console.WriteLine($"Go to location {otherData}.");
+            case CardType.GoToLocation:
+                player.MoveToAbsolute(otherData);
+                UserInterface.GetBoard()[otherData].LandOnSpace(player);
                 break;
-            case RECIEVE_MONEY:
-                Console.WriteLine($"Recieve ${otherData}.");
+
+            case CardType.UpdateMoney:
+                player.UpdateMoney(otherData);
                 break;
-            case LOSE_MONEY:
-                Console.WriteLine($"You lose ${otherData}.");
+
+            case CardType.GoToRelative:
+                player.MoveToRelative(otherData);
+                UserInterface.GetBoard()[otherData].LandOnSpace(player);
                 break;
+            
+            case CardType.GoToJail:
+                player.GoToJail();
+                break;
+            
+            case CardType.GoToRailroad:
+                GoToRailroad(player);
+                break;
+            
+            case CardType.GetFromAllPlayers:
+                GetFromAllPlayers(player, otherData);
+                break;
+            
         }
     }
 
@@ -48,5 +61,46 @@ public class Card
     public static List<Card> GetCommunityChestDeck()
     {
         throw new NotImplementedException();
+    }
+
+    private void GoToRailroad(Player player)
+    {
+        // find the nearest railroad
+        int locationToGoTo = Space.RAILROAD_LOCATIONS[0];
+        foreach (int railroadLocation in Space.RAILROAD_LOCATIONS)
+        {
+            if (player.GetLocation() < railroadLocation)
+            {
+                locationToGoTo = railroadLocation;
+                break;
+            }
+        }
+
+        // go to the location
+        player.MoveToAbsolute(locationToGoTo);
+        
+        Property railroad = (Property)UserInterface.GetBoard()[locationToGoTo];
+        Player ? railroadOwner = railroad.GetOwner();
+
+        // if the railroad is owned by someone else
+        if (railroadOwner is not null && railroadOwner != player)
+        {
+            // we have to pay double rent, so just land on it one more time
+            railroad.LandOnSpace(player);
+        }
+
+        railroad.LandOnSpace(player);
+    }
+
+    private void GetFromAllPlayers(Player player, int amount)
+    {
+        List<Player> playerList = UserInterface.GetPlayerList();
+
+        foreach (Player currentPlayer in playerList)
+        {
+            currentPlayer.UpdateMoney(-amount);
+        }
+
+        player.UpdateMoney(amount * playerList.Count);
     }
 }

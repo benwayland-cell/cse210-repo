@@ -19,6 +19,7 @@ public abstract class Space
     public abstract void Display();
 
     public const int JAIL_LOCATION = 10;
+    public static int[] RAILROAD_LOCATIONS = [5, 15, 25, 35];
 
     /* Returns an array of the default board */
     static public Space[] GetBoard()
