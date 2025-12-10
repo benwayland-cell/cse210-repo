@@ -195,7 +195,8 @@ public class Player
                 
                 case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
-                    UserInterface.DrawChanceCard(this);
+                    UserInterface.GetBoard()[5].LandOnSpace(this);
+                    UserInterface.GetBoard()[12].LandOnSpace(this);
                     break;
 
             }

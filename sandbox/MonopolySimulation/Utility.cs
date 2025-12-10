@@ -1,6 +1,8 @@
 
 public class Utility : Property
 {
+    private static int[] rent = [3, 10];
+    
     public Utility(string _name, int _price) : base(_name, _price, "Utility")
     {
         
@@ -8,7 +10,11 @@ public class Utility : Property
 
     protected override void PayRent(Player payingPlayer)
     {
-        Console.WriteLine("Pay rent on utility, not implemented");
+        Random random = new Random();
+
+        int dieRoll = random.Next(0, 7) + random.Next(0, 7);
+
+        payingPlayer.UpdateMoney(-dieRoll * rent[numOfSameTypeOwned - 1]);
     }
 
     public override void Display()

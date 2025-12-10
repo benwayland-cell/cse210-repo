@@ -48,8 +48,6 @@ public class UserInterface
             currentPlayer.RunTurn();
 
             currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
-
-            Console.ReadLine();
         }
 
         Console.WriteLine($"\n{playerList[0].GetName()} won!");
