@@ -103,6 +103,11 @@ public class StandardProperty : Property
 
     public override int GetNetWorth()
     {
+        if (IsMortgaged())
+        {
+            return GetPrice() / 2;
+        }
+        
         return GetPrice() + pricePerHouse * numOfHouses;
     }
 }

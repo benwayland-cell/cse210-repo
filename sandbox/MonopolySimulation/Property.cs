@@ -29,6 +29,11 @@ public abstract class Property : Space
         return type;
     }
 
+    public bool IsMortgaged()
+    {
+        return mortgaged;
+    }
+
     /* Runs through landing on a property.
     If they player landing owns it, do nothing
     If the property is owned and the landing player does not own it, make them pay rent
@@ -89,6 +94,11 @@ public abstract class Property : Space
 
     public virtual int GetNetWorth()
     {
+        if (mortgaged)
+        {
+            return GetPrice() / 2;
+        }
+        
         return GetPrice();
     }
 }
