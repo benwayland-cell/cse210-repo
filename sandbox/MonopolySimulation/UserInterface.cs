@@ -1,10 +1,10 @@
 
 public class UserInterface
 {
-    private static Space[] board;
-    private static List<Player> playerList;
-    private static Stack<Card> chanceDeck;
-    private static Stack<Card> communityChestDeck;
+    private static Space[] board = [];
+    private static List<Player> playerList = new List<Player>();
+    private static Stack<Card> chanceDeck = new Stack<Card>();
+    private static Stack<Card> communityChestDeck = new Stack<Card>();
 
     static public int GetSizeOfBoard()
     {
