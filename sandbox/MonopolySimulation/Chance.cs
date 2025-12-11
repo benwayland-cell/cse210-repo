@@ -8,6 +8,7 @@ public class Chance : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
+        Console.WriteLine($"Landed on {GetName()}");
         UserInterface.DrawChanceCard(currentPlayer);
     }
 

@@ -8,6 +8,7 @@ public class CommunityChest : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
+        Console.WriteLine($"Landed on {GetName()}");
         UserInterface.DrawCommunityChestCard(currentPlayer);
     }
 

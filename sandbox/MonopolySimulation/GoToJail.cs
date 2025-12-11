@@ -8,6 +8,7 @@ public class GoToJail : Space
 
     public override void LandOnSpace(Player currentPlayer)
     {
+        Console.WriteLine($"Landed on {GetName()}");
         currentPlayer.GoToJail();
     }
 
