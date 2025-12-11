@@ -84,6 +84,11 @@ public abstract class Property : Space
         Console.WriteLine($"{GetName()} is up for auction.");
 
         Console.WriteLine("Testing for branching");
+
+        foreach(Player currentPlayer in playerList)
+        {
+            
+        }
     }
 
     protected abstract void PayRent(Player payingPlayer);
