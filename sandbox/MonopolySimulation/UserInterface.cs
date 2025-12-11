@@ -2,7 +2,7 @@
 public class UserInterface
 {
     private static Space[] board = [];
-    private static List<Player> playerList = new List<Player>();
+    public static List<Player> playerList = new List<Player>();
     private static Stack<Card> chanceDeck = new Stack<Card>();
     private static Stack<Card> communityChestDeck = new Stack<Card>();
 
@@ -48,6 +48,8 @@ public class UserInterface
             currentPlayer.RunTurn();
 
             currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
+
+            Console.ReadLine();
         }
 
         Console.WriteLine($"\n{playerList[0].GetName()} won!");

@@ -66,7 +66,7 @@ public abstract class Property : Space
                 return;
             }
         }
-        RunAuction(UserInterface.GetPlayerList());
+        RunAuction(ref UserInterface.playerList);
     }
 
     private void Purchase(Player purchasingPlayer)
@@ -79,16 +79,51 @@ public abstract class Property : Space
         owner = purchasingPlayer;
     }
 
-    private void RunAuction(List<Player> playerList)
+    private void RunAuction(ref List<Player> playerList)
     {
         Console.WriteLine($"{GetName()} is up for auction.");
 
-        Console.WriteLine("Testing for branching");
+        int playerIndex = 0;
+        Player currentPlayer;
+        int userInput;
+        int numOfPlayersConceded = 0;
 
-        foreach(Player currentPlayer in playerList)
+        Player playerWithHighestBet = playerList[0];
+        int highestBet = 0;
+
+        while (numOfPlayersConceded < playerList.Count - 1)
         {
-            
+            currentPlayer = playerList[playerIndex];
+
+
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine($"{currentPlayer.GetName()}, what will you bet for {GetName()}? (0 to not bet)");
+                Console.WriteLine($"Highest Bet: {playerWithHighestBet.GetName()}, ${highestBet}");
+                userInput = UserInterface.GetUserInputUnbounded();
+
+                if (userInput == 0)
+                {
+                    numOfPlayersConceded++;
+                    break;
+                }
+                else if (userInput > highestBet)
+                {
+                    highestBet = userInput;
+                    playerWithHighestBet = currentPlayer;
+                    numOfPlayersConceded = 0;
+                    break;
+                }
+            }
+
+            playerIndex = (playerIndex + 1) % playerList.Count;
         }
+
+        Console.WriteLine($"{playerWithHighestBet.GetName()} won the auction!");
+        playerWithHighestBet.AddProperty(this);
+        owner = playerWithHighestBet;
+        playerWithHighestBet.UpdateMoney(-price);
     }
 
     protected abstract void PayRent(Player payingPlayer);
