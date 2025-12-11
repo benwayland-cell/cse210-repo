@@ -81,7 +81,9 @@ public abstract class Property : Space
 
     private void RunAuction(List<Player> playerList)
     {
-        Console.WriteLine($"Run auction on {GetName()}, not implemented");
+        Console.WriteLine($"{GetName()} is up for auction.");
+
+        Console.WriteLine("Testing for branching");
     }
 
     protected abstract void PayRent(Player payingPlayer);
