@@ -32,7 +32,7 @@ public class UserInterface
 
         // debug code
 
-        // board[9].LandOnSpace(playerList[0]);
+        board[1].LandOnSpace(playerList[0]);
         // ((Property)board[9]).Mortgage();
 
 
@@ -146,6 +146,28 @@ public class UserInterface
         }
     }
 
+    public static int GetUserInputWithMin(int min)
+    {
+        string ? userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                if (userInputInt >= min)
+                {
+                    return userInputInt;
+                }
+            }
+
+            Console.Write($"User input invalid, Try again. ({min}+) ");
+            
+        }
+    }
+
     /* Gets a yes or a no from a user
     Return:
         true if yes
@@ -158,5 +180,22 @@ public class UserInterface
         int userInput = GetUserInputInBounds(1, 2);
 
         return userInput == 1;
+    }
+
+    public static string DisplayWithSpacing(string givenString, int spacingAmount)
+    {
+        if (givenString is null)
+        {
+            givenString = "";
+        }
+        
+        string spaceString = "";
+
+        for (int i = 0; i < spacingAmount - givenString.Count(); i++)
+        {
+            spaceString += " ";
+        }
+
+        return givenString + spaceString;
     }
 }

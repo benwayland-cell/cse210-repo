@@ -24,6 +24,11 @@ public abstract class Property : Space
         return owner;
     }
 
+    public void SetOwner(Player player)
+    {
+        owner = player;
+    }
+
     public string GetTypeOfProperty()
     {
         return type;

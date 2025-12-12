@@ -42,25 +42,8 @@ public class StandardProperty : Property
         }
         
         Console.WriteLine(
-            $"Name: {DisplayWithSpacing(GetName(), 20)}  Price: {DisplayWithSpacing(GetPrice().ToString(), 4)}  Color: {DisplayWithSpacing(GetTypeOfProperty(), 15)} " + 
-            $"Owner: {DisplayWithSpacing(ownerName, 20)}\t  NumOfHouses: {DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}  M: {IsMortgaged().ToString()[0]}");
-    }
-
-    private string DisplayWithSpacing(string givenString, int spacingAmount)
-    {
-        if (givenString is null)
-        {
-            givenString = "";
-        }
-        
-        string spaceString = "";
-
-        for (int i = 0; i < spacingAmount - givenString.Count(); i++)
-        {
-            spaceString += " ";
-        }
-
-        return givenString + spaceString;
+            $"Name: {UserInterface.DisplayWithSpacing(GetName(), 20)}  Price: {UserInterface.DisplayWithSpacing(GetPrice().ToString(), 4)}  Color: {UserInterface.DisplayWithSpacing(GetTypeOfProperty(), 15)} " + 
+            $"Owner: {UserInterface.DisplayWithSpacing(ownerName, 20)}\t  NumOfHouses: {UserInterface.DisplayWithSpacing(numOfHouses.ToString(), 2)}  NumOfSameTypeOwned: {UserInterface.DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}  M: {IsMortgaged().ToString()[0]}");
     }
 
     public override bool OwnerHasMonopoly()

@@ -74,9 +74,9 @@ public class Player
         }
     }
 
-    public void RemoveProperty()
+    public void RemoveProperty(Property propertyToRemove)
     {
-        throw new NotImplementedException();
+        ownedProperties.Remove(propertyToRemove);
     }
 
     /* Moves the player to the index given and checks if they passed go.
@@ -159,6 +159,7 @@ public class Player
         bool done = false;
         while (!done)
         {
+            Console.WriteLine($"\n{name}'s turn:");
             foreach (string line in playerMenu)
             {
                 Console.WriteLine(line);
@@ -231,8 +232,6 @@ public class Player
 
                 numOfGetOutOfJailCards--;
             }
-
-            
         }
         
         do
@@ -323,7 +322,102 @@ public class Player
 
     private void TradeWithOthers()
     {
-        Console.WriteLine("Trade with others, not implemented.");
+        Console.Clear();
+
+        // get who to trade with
+        Console.WriteLine($"{GetName()} who will you trade with?");
+        UserInterface.DisplayPlayers();
+
+        int userInput = UserInterface.GetUserInputInBounds(0, UserInterface.playerList.Count - 1);
+        Player playerToTradeWith = UserInterface.playerList[userInput];
+
+        Player[] tradingPlayers = {this, playerToTradeWith};
+        int[] moneyToGive = new int[2];
+        List<Property>[] propertiesToGive = new List<Property>[2];
+
+        // get what the players will trade
+        for (int index = 0; index < 2; index++)
+        {
+            // get the money they will trade
+            Player currentPlayer = tradingPlayers[index];
+            Console.WriteLine($"{currentPlayer.GetName()} how much money will you give?");
+            moneyToGive[index] = UserInterface.GetUserInputWithMin(0);
+
+            // get the properties they will trade
+            List<Property> currentPropertiesToGive = new List<Property>();
+            
+            while (true)
+            {
+                // display owned properties
+                Console.WriteLine($"Properties owned by {currentPlayer.GetName()}:");
+                for (int propertyIndex = 0; propertyIndex < currentPlayer.GetOwnedProperties().Count; propertyIndex++)
+                {
+                    Console.Write($"{propertyIndex}. ");
+                    currentPlayer.GetOwnedProperties()[propertyIndex].Display();
+                }
+
+                // display properties the player will give
+                Console.WriteLine($"\nProperties {currentPlayer.GetName()} will trade:");
+                for (int propertyIndex = 0; propertyIndex < currentPropertiesToGive.Count; propertyIndex++)
+                {
+                    Console.Write($"{propertyIndex}. ");
+                    currentPropertiesToGive[propertyIndex].Display();
+                }
+                Console.WriteLine();
+
+                // get what property to give
+                Console.WriteLine($"{currentPlayer.GetName()} which property will you give? (-1 to stop)");
+                userInput = UserInterface.GetUserInputInBounds(-1, currentPlayer.GetOwnedProperties().Count);
+                if (userInput == -1) {break;}
+                Property propertyToGive = currentPlayer.GetOwnedProperties()[userInput];
+                
+                // check if they have already given propertyToGive
+                bool alreadyGaveProperty = false;
+                foreach (Property currentProperty in currentPlayer.GetOwnedProperties())
+                {
+                    if (currentProperty == propertyToGive)
+                    {
+                        alreadyGaveProperty = true;
+                        break;
+                    }
+                }
+
+                if (alreadyGaveProperty)
+                {
+                    currentPropertiesToGive.Add(propertyToGive);
+                    Console.WriteLine("Ran");
+                }
+                
+            }
+
+            propertiesToGive[index] = currentPropertiesToGive;
+        }
+
+        // ask for consent from other player
+        Console.WriteLine($"{playerToTradeWith.GetName()} do you agree to this?");
+        if (!UserInterface.GetYesNo())
+        {
+            return;
+        }
+
+        // trade money and property
+        for (int index = 0; index < 2; index++)
+        {
+            Player currentPlayer = tradingPlayers[index];
+            Player otherPlayer = tradingPlayers[(index + 1) % 2];
+
+            // give property
+            foreach (Property currentProperty in propertiesToGive[index])
+            {
+                currentPlayer.RemoveProperty(currentProperty);
+                otherPlayer.AddProperty(currentProperty);
+                currentProperty.SetOwner(otherPlayer);
+            }
+
+            // give money
+            currentPlayer.UpdateMoney(-moneyToGive[index]);
+            otherPlayer.UpdateMoney(moneyToGive[index]);
+        }
     }
 
     public int GetNetWorth()

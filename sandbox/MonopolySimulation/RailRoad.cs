@@ -15,7 +15,16 @@ public class RailRoad : Property
 
     public override void Display()
     {
-        Console.WriteLine(GetName());
+        Player ? ownerToDisplay = GetOwner();
+        string ownerName = "";
+        if (ownerToDisplay is not null)
+        {
+            ownerName = ownerToDisplay.GetName();
+        }
+        
+        Console.WriteLine(
+            $"Name: {UserInterface.DisplayWithSpacing(GetName(), 20)}  Price: {UserInterface.DisplayWithSpacing(GetPrice().ToString(), 4)}  " + 
+            $"Owner: {UserInterface.DisplayWithSpacing(ownerName, 40)}\t  NumOfSameTypeOwned: {UserInterface.DisplayWithSpacing(numOfSameTypeOwned.ToString(), 2)}  M: {IsMortgaged().ToString()[0]}");
     }
 
     public override bool OwnerHasMonopoly()
