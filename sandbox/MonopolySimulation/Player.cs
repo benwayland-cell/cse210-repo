@@ -147,15 +147,16 @@ public class Player
     public void RunTurn()
     {
         Console.Clear();
-        Console.WriteLine($"{name}'s turn:");
-        Console.WriteLine($"Location: {location}");
-        Console.WriteLine($"Money: {money}\n");
-
 
         bool done = false;
         while (!done && money >= 0) // the money >= 0 is used to immediately end a player's turn if they are bankrupt
         {
-            Console.WriteLine($"\n{name}'s turn:");
+            Console.WriteLine($"{name}'s turn:");
+            Console.WriteLine($"Location: {location}");
+            Console.WriteLine($"Money: {money}");
+            Console.WriteLine($"Get out of jail cards: {numOfGetOutOfJailCards}");
+            Console.WriteLine($"Tuns left in Jail: {turnsLeftInJail}\n");
+
             foreach (string line in playerMenu)
             {
                 Console.WriteLine(line);
@@ -192,10 +193,12 @@ public class Player
                 
                 case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
-                    location = 7;
-                    UserInterface.GetBoard()[location].LandOnSpace(this);
+                    // location = 7;
+                    // UserInterface.GetBoard()[location].LandOnSpace(this);
                     // new Card("test text", CardType.GoToLocation, Space.GO_LOCATION).PlayCard(this);
-                    done = true;
+
+                    // for (int i = 0; i < 20; i++) UserInterface.DrawCommunityChestCard(this);
+                    // done = true;
                     break;
 
             }
