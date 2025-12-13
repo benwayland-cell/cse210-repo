@@ -29,6 +29,13 @@ public class StandardProperty : Property
     protected override void PayRent(Player payingPlayer)
     {
         int rentToPay = rent[numOfHouses];
+
+        // double rent if no houses and monopoly
+        if (numOfHouses == 0 && numOfSameTypeOwned == propertiesNeededForMonopoly)
+        {
+            rentToPay *= 2;
+        }
+
         payingPlayer.UpdateMoney(-rentToPay, GetOwner());
     }
 
