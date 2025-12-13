@@ -9,7 +9,7 @@ public class IncomeTax : Space
     public override void LandOnSpace(Player currentPlayer)
     {
         Console.WriteLine($"Landed on {GetName()}");
-        currentPlayer.UpdateMoney(-200);
+        currentPlayer.UpdateMoney(-200, null);
     }
 
     public override void Display()

@@ -29,7 +29,7 @@ public class StandardProperty : Property
     protected override void PayRent(Player payingPlayer)
     {
         int rentToPay = rent[numOfHouses];
-        payingPlayer.UpdateMoney(-rentToPay);
+        payingPlayer.UpdateMoney(-rentToPay, GetOwner());
     }
 
     public override void Display()
@@ -75,7 +75,7 @@ public class StandardProperty : Property
         Player ? currentOwner = GetOwner();
         if (currentOwner is null) {return;}
         
-        currentOwner.UpdateMoney(-pricePerHouse);
+        currentOwner.UpdateMoney(-pricePerHouse, GetOwner());
         numOfHouses++;
 
         if (numOfHouses > 5)

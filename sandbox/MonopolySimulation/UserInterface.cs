@@ -47,6 +47,13 @@ public class UserInterface
 
             currentPlayer.RunTurn();
 
+            // if they went bankrupt, remove them from the game
+            if (currentPlayer.GetMoney() < 0)
+            {
+                playerList.Remove(currentPlayer);
+                currentPlayerIndex--;
+            }
+
             currentPlayerIndex = (currentPlayerIndex + 1) % playerList.Count;
 
             Console.ReadLine();

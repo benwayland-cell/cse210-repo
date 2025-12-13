@@ -30,7 +30,7 @@ public class Card
                 break;
 
             case CardType.UpdateMoney:
-                player.UpdateMoney(otherData);
+                player.UpdateMoney(otherData, null);
                 break;
 
             case CardType.GoToRelative:
@@ -103,10 +103,10 @@ public class Card
 
         foreach (Player currentPlayer in playerList)
         {
-            currentPlayer.UpdateMoney(-amount);
+            currentPlayer.UpdateMoney(-amount, player);
         }
 
-        player.UpdateMoney(amount * playerList.Count);
+        player.UpdateMoney(amount * playerList.Count, null);
     }
 
     private void PayPerHouse(Player player, int costPerHouse, int costPerHotel)

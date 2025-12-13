@@ -14,7 +14,7 @@ public class Utility : Property
 
         int dieRoll = random.Next(0, 7) + random.Next(0, 7);
 
-        payingPlayer.UpdateMoney(-dieRoll * rent[numOfSameTypeOwned - 1]);
+        payingPlayer.UpdateMoney(-dieRoll * rent[numOfSameTypeOwned - 1], GetOwner());
     }
 
     public override void Display()

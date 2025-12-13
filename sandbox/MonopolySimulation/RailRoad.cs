@@ -10,7 +10,7 @@ public class RailRoad : Property
 
     protected override void PayRent(Player payingPlayer)
     {
-        payingPlayer.UpdateMoney(-rent[numOfSameTypeOwned - 1]);
+        payingPlayer.UpdateMoney(-rent[numOfSameTypeOwned - 1], GetOwner());
     }
 
     public override void Display()

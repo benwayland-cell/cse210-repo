@@ -9,7 +9,7 @@ public class LuxuryTax : Space
     public override void LandOnSpace(Player currentPlayer)
     {
         Console.WriteLine($"Landed on {GetName()}");
-        currentPlayer.UpdateMoney(-100);
+        currentPlayer.UpdateMoney(-100, null);
     }
 
     public override void Display()

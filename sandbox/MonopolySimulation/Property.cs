@@ -77,7 +77,7 @@ public abstract class Property : Space
     private void Purchase(Player purchasingPlayer)
     {
         // Take the money from the player
-        purchasingPlayer.UpdateMoney(-price);
+        purchasingPlayer.UpdateMoney(-price, null);
         // Give them the property
         purchasingPlayer.AddProperty(this);
         // set the owner
@@ -128,7 +128,7 @@ public abstract class Property : Space
         Console.WriteLine($"{playerWithHighestBet.GetName()} won the auction!");
         playerWithHighestBet.AddProperty(this);
         owner = playerWithHighestBet;
-        playerWithHighestBet.UpdateMoney(-price);
+        playerWithHighestBet.UpdateMoney(-price, null);
     }
 
     protected abstract void PayRent(Player payingPlayer);
@@ -164,6 +164,6 @@ public abstract class Property : Space
         }
         
         mortgaged = false;
-        owner.UpdateMoney(-(int)(price / 2 * 0.1));
+        owner.UpdateMoney(-(int)(price / 2 * 0.1), null);
     }
 }

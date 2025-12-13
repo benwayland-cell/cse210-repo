@@ -25,13 +25,13 @@ public class Player
         return money;
     }
 
-    public void UpdateMoney(int amountToChange)
+    public void UpdateMoney(int amountToChange, Player ? debtor)
     {
         money += amountToChange;
 
         if (money < 0)
         {
-            InDebt();
+            InDebt(debtor);
         }
     }
 
@@ -153,7 +153,7 @@ public class Player
 
 
         bool done = false;
-        while (!done)
+        while (!done && money >= 0) // the money >= 0 is used to immediately end a player's turn if they are bankrupt
         {
             Console.WriteLine($"\n{name}'s turn:");
             foreach (string line in playerMenu)
@@ -214,7 +214,7 @@ public class Player
             Console.WriteLine("Do you want to pay $50 to get out of jail?");
             if (UserInterface.GetYesNo())
             {
-                UpdateMoney(-50);
+                UpdateMoney(-50, null);
             }
             
             else if (numOfGetOutOfJailCards > 0)
@@ -413,8 +413,8 @@ public class Player
             }
 
             // give money
-            currentPlayer.UpdateMoney(-moneyToGive[index]);
-            otherPlayer.UpdateMoney(moneyToGive[index]);
+            currentPlayer.UpdateMoney(-moneyToGive[index], otherPlayer);
+            otherPlayer.UpdateMoney(moneyToGive[index], currentPlayer);
         }
     }
 
@@ -430,8 +430,11 @@ public class Player
         return netWorth;
     }
 
-    /* Get the player out of debt by mortaging houses */
-    private void InDebt()
+    /* Get the player out of debt by mortaging houses
+    Parameters:
+        debtor: the person we are in debt to
+    */
+    private void InDebt(Player ? debtor)
     {
         // get a list of all unmortgaged properties
         List<Property> unmortgagedProperties = new List<Property>();
@@ -464,13 +467,24 @@ public class Player
 
         if (money < 0)
         {
-            Bankrupt();
+            Bankrupt(debtor);
         }
     }
 
-    private void Bankrupt()
+    // give the debtor all assets when bankrupt
+    private void Bankrupt(Player ? debtor)
     {
-        Console.WriteLine("Uh oh, you're still in debt");
+        if (debtor is null)
+        {
+            return;
+        }
+
+        debtor.UpdateMoney(money, this);
+        foreach (Property currentProperty in ownedProperties)
+        {
+            debtor.AddProperty(currentProperty);
+            currentProperty.SetOwner(debtor);
+        }
     }
 
     private void Unmortgage()
