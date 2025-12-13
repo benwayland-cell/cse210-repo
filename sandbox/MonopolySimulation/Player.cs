@@ -192,8 +192,7 @@ public class Player
                 
                 case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
-                    UserInterface.GetBoard()[5].LandOnSpace(this);
-                    UserInterface.GetBoard()[12].LandOnSpace(this);
+                    UpdateMoney(-1501 + 60, UserInterface.GetPlayerList()[1]);
                     break;
 
             }
@@ -447,21 +446,23 @@ public class Player
             }
         }
 
-        Console.WriteLine($"Num of unmortgaged: {unmortgagedProperties.Count}");
+        // Console.WriteLine($"Num of unmortgaged: {unmortgagedProperties.Count}");
 
         while (money < 0 && unmortgagedProperties.Count > 0)
         {
             // display the properties
             for (int index = 0; index < unmortgagedProperties.Count; index++)
             {
-                Console.WriteLine($"{index}. ");
+                Console.Write($"{index}. ");
                 unmortgagedProperties[index].Display();
             }
 
+            Console.WriteLine($"Debt: {money}");
             Console.WriteLine("Which property to mortgage?");
             int userInput = UserInterface.GetUserInputInBounds(0, unmortgagedProperties.Count);
 
-            money += unmortgagedProperties[userInput].Mortgage();
+            int moneyToGet = unmortgagedProperties[userInput].Mortgage();
+            money += moneyToGet;
             unmortgagedProperties.Remove(unmortgagedProperties[userInput]);
         }
 
@@ -474,12 +475,12 @@ public class Player
     // give the debtor all assets when bankrupt
     private void Bankrupt(Player ? debtor)
     {
+        Console.WriteLine($"{GetName()} is bankrupt.");
         if (debtor is null)
         {
             return;
         }
 
-        debtor.UpdateMoney(money, this);
         foreach (Property currentProperty in ownedProperties)
         {
             debtor.AddProperty(currentProperty);
