@@ -32,7 +32,7 @@ public class UserInterface
 
         // debug code
 
-        board[1].LandOnSpace(playerList[0]);
+        board[1].LandOnSpace(playerList[1]);
         // ((Property)board[9]).Mortgage();
 
 

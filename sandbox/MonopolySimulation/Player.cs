@@ -113,10 +113,6 @@ public class Player
             location -= sizeOfBoard;
             PassGo();
         }
-        else if (location < 0)
-        {
-            location += sizeOfBoard;
-        }
     }
 
     private void PassGo()
@@ -338,8 +334,10 @@ public class Player
         // get what the players will trade
         for (int index = 0; index < 2; index++)
         {
+            Console.Clear();
             // get the money they will trade
             Player currentPlayer = tradingPlayers[index];
+            List<Property> propertiesOwnedByCurrentPlayer = currentPlayer.GetOwnedProperties();
             Console.WriteLine($"{currentPlayer.GetName()} how much money will you give?");
             moneyToGive[index] = UserInterface.GetUserInputWithMin(0);
 
@@ -350,10 +348,10 @@ public class Player
             {
                 // display owned properties
                 Console.WriteLine($"Properties owned by {currentPlayer.GetName()}:");
-                for (int propertyIndex = 0; propertyIndex < currentPlayer.GetOwnedProperties().Count; propertyIndex++)
+                for (int propertyIndex = 0; propertyIndex < propertiesOwnedByCurrentPlayer.Count; propertyIndex++)
                 {
                     Console.Write($"{propertyIndex}. ");
-                    currentPlayer.GetOwnedProperties()[propertyIndex].Display();
+                    propertiesOwnedByCurrentPlayer[propertyIndex].Display();
                 }
 
                 // display properties the player will give
@@ -367,25 +365,24 @@ public class Player
 
                 // get what property to give
                 Console.WriteLine($"{currentPlayer.GetName()} which property will you give? (-1 to stop)");
-                userInput = UserInterface.GetUserInputInBounds(-1, currentPlayer.GetOwnedProperties().Count);
+                userInput = UserInterface.GetUserInputInBounds(-1, propertiesOwnedByCurrentPlayer.Count);
                 if (userInput == -1) {break;}
-                Property propertyToGive = currentPlayer.GetOwnedProperties()[userInput];
+                Property propertyToGive = propertiesOwnedByCurrentPlayer[userInput];
                 
                 // check if they have already given propertyToGive
                 bool alreadyGaveProperty = false;
-                foreach (Property currentProperty in currentPlayer.GetOwnedProperties())
+                foreach (Property currentProperty in currentPropertiesToGive)
                 {
-                    if (currentProperty == propertyToGive)
+                    if (currentProperty.GetName() == propertyToGive.GetName())
                     {
                         alreadyGaveProperty = true;
                         break;
                     }
                 }
 
-                if (alreadyGaveProperty)
+                if (!alreadyGaveProperty)
                 {
                     currentPropertiesToGive.Add(propertyToGive);
-                    Console.WriteLine("Ran");
                 }
                 
             }
@@ -394,6 +391,7 @@ public class Player
         }
 
         // ask for consent from other player
+        Console.Clear();
         Console.WriteLine($"{playerToTradeWith.GetName()} do you agree to this?");
         if (!UserInterface.GetYesNo())
         {
