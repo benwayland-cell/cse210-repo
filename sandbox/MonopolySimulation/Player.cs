@@ -162,7 +162,7 @@ public class Player
                 Console.WriteLine(line);
             }
 
-            int userInput = UserInterface.GetUserInputInBounds(0, (int)PlayerMenu.Debug);
+            int userInput = UserInterface.GetUserInputInBounds(0, (int)PlayerMenu.ViewBoard);
 
             switch (userInput)
             {
