@@ -35,7 +35,7 @@ public class Card
 
             case CardType.GoToRelative:
                 player.MoveToRelative(otherData);
-                UserInterface.GetBoard()[otherData].LandOnSpace(player);
+                UserInterface.GetBoard()[player.GetLocation()].LandOnSpace(player);
                 break;
             
             case CardType.GoToJail:

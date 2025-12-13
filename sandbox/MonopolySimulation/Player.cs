@@ -192,7 +192,9 @@ public class Player
                 
                 case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
-                    UpdateMoney(-1501 + 60, UserInterface.GetPlayerList()[1]);
+                    location = 7;
+                    // UserInterface.GetBoard()[location].LandOnSpace(this);
+                    new Card("test text", CardType.GoToLocation, Space.GO_LOCATION).PlayCard(this);
                     break;
 
             }
