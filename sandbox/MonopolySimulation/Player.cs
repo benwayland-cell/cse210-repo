@@ -193,8 +193,9 @@ public class Player
                 case (int)PlayerMenu.Debug:
                     Console.WriteLine("Run debug");
                     location = 7;
-                    // UserInterface.GetBoard()[location].LandOnSpace(this);
-                    new Card("test text", CardType.GoToLocation, Space.GO_LOCATION).PlayCard(this);
+                    UserInterface.GetBoard()[location].LandOnSpace(this);
+                    // new Card("test text", CardType.GoToLocation, Space.GO_LOCATION).PlayCard(this);
+                    done = true;
                     break;
 
             }
@@ -217,7 +218,7 @@ public class Player
             {
                 UpdateMoney(-50, null);
             }
-            
+
             else if (numOfGetOutOfJailCards > 0)
             {
                 Console.WriteLine("Do you want to use your Get out of Jail Free card?");
@@ -228,6 +229,11 @@ public class Player
                 }
 
                 numOfGetOutOfJailCards--;
+            }
+            else
+            {
+                RunPlayerInJail();
+                return;
             }
         }
         
@@ -271,14 +277,18 @@ public class Player
 
     private void RunPlayerInJail()
     {
+        Console.WriteLine("Ran");
         int dieTotal;
-        if (!Roll2D6(out dieTotal))
+        bool rolledDoubles = !Roll2D6(out dieTotal);
+        if (rolledDoubles)
         {
             turnsLeftInJail--;
+            Console.WriteLine("Didn't roll doubles");
             return;
         }
 
         MoveToRelative(dieTotal);
+        Console.WriteLine($"Location {location}, Rolled doubles");
         UserInterface.LandOnGivenSpace(location, this);
     }
 
